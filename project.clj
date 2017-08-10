@@ -5,8 +5,7 @@
                       :url  "http://www.eclipse.org/legal/epl-v10.html"}
             :dependencies [[org.clojure/clojure "1.9.0-alpha16"]
                            [org.clojure/clojurescript "1.9.542"]
-                           [reagent "0.6.1" :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server]]
-[re-frame "0.9.2"]]
+                           [reagent "0.6.1" :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server]]]
             :plugins [[lein-cljsbuild "1.1.4"]
                       [lein-figwheel "0.5.10"]]
             :clean-targets ["target/" "index.ios.js" "index.android.js" #_($PLATFORM_CLEAN$)]
@@ -31,7 +30,7 @@
                                                                      :main          "env.android.main"
                                                                      :output-dir    "target/android"
                                                                      :optimizations :none}}
-#_($DEV_PROFILES$)]}
+                                                     #_($DEV_PROFILES$)]}
                              :repl-options {:nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}}
                        :prod {:cljsbuild {:builds [
                                                    {:id           "ios"
@@ -52,6 +51,4 @@
                                                                    :optimize-constants true
                                                                    :optimizations :simple
                                                                    :closure-defines {"goog.DEBUG" false}}}
-#_($PROD_PROFILES$)]}}})
-                                                  
-                      
+                                                   #_($PROD_PROFILES$)]}}})
