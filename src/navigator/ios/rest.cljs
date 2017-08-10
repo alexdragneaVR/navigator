@@ -40,7 +40,8 @@
     result))
 
 (defn POST< [url json]
-  (if-not (nil? (:session-token @authinfo))
-    (-handle-post (str "https://dev.visualretailingcloud.com" url) (:session-token @authinfo) json)
-    (go (<! (-login authinfo))
-        (<! (-handle-post (str "https://dev.visualretailingcloud.com" url) (:session-token @authinfo) json)))))
+  (let [url (str "https://dev.visualretailingcloud.com" url)]
+    (if-not (nil? (:session-token @authinfo))
+      (-handle-post url (:session-token @authinfo) json)
+      (go (<! (-login authinfo))
+          (<! (-handle-post url (:session-token @authinfo) json))))))

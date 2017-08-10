@@ -1,8 +1,5 @@
 (ns navigator.android.core
-  (:require [reagent.core :as r :refer [atom]]
-            [re-frame.core :refer [subscribe dispatch dispatch-sync]]
-            [navigator.events]
-            [navigator.subs]))
+  (:require [reagent.core :as r :refer [atom]]))
 
 (def ReactNative (js/require "react-native"))
 
@@ -18,7 +15,7 @@
       (.alert (.-Alert ReactNative) title))
 
 (defn app-root []
-  (let [greeting (subscribe [:get-greeting])]
+  (let [greeting (atom "Hello")]
     (fn []
       [view {:style {:flex-direction "column" :margin 40 :align-items "center"}}
        [text {:style {:font-size 30 :font-weight "100" :margin-bottom 20 :text-align "center"}} @greeting]
@@ -29,5 +26,4 @@
         [text {:style {:color "white" :text-align "center" :font-weight "bold"}} "press me"]]])))
 
 (defn init []
-      (dispatch-sync [:initialize-db])
       (.registerComponent app-registry "navigator" #(r/reactify-component app-root)))

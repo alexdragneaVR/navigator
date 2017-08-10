@@ -1,6 +1,5 @@
  (ns ^:figwheel-no-load env.ios.main
   (:require [reagent.core :as r]
-            [re-frame.core :refer [clear-subscription-cache!]]
             [navigator.ios.core :as core]
             [figwheel.client :as figwheel :include-macros true]))
 
@@ -13,7 +12,6 @@
 (def root-el (r/as-element [reloader]))
 
 (defn force-reload! []
-  (clear-subscription-cache!)
   (swap! cnt inc))
 
 (figwheel/watch-and-reload
