@@ -12,10 +12,11 @@
 (defn- -handle-post [url token json]
   (let [request (new goog.net.XhrIo)
         result (promise-chan)]
-    (print "POST" url json)
     (events/listen request "complete" (fn []
-                                        (put! result (:data (js->clj (.getResponseJson request) :keywordize-keys true)))
-                                        (println "response recieved" (js->clj (.getResponseJson request)))))
+                                        (let [response (js->clj (.getResponseJson request) :keywordize-keys true)]
+                                          (put! result (:data response))
+                                          (println "received response" result))))
+    (println "POST" url json)
     (.send request url "POST" (.stringify js/JSON (clj->js json)) #js{"Content-Type" "application/json"
                                                                       "Cookie" token})
     result))

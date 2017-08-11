@@ -6,6 +6,7 @@
             :dependencies [[org.clojure/clojure "1.9.0-alpha16"]
                            [org.clojure/clojurescript "1.9.854"]
                            [org.clojure/core.async "0.3.443"]
+                           [com.andrewmcveigh/cljs-time "0.5.0"]
                            [reagent "0.6.1" :exclusions [cljsjs/react cljsjs/react-dom cljsjs/react-dom-server]]]
             :plugins [[lein-cljsbuild "1.1.4"]
                       [lein-figwheel "0.5.10"]]

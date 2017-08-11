@@ -1,10 +1,52 @@
 (ns vr.pixa.local-storage
-  (:require [cljs.core.async :refer [put! promise-chan]])
-  (:require-macros [cljs.core.async.macros :refer [go]]))
+  (:require [cljs.core.async :refer [put! promise-chan] :as async]
+            [vr.pi :refer [error]])
+  (:require-macros [cljs.core.async.macros :refer [go go-loop]]
+                   [vr.macros :refer [gosafe]]))
+
+(def ReactNative (js/require "react-native"))
+(def AsyncStorage (-> ReactNative .-AsyncStorage))
+(def NetInfo (-> ReactNative .-NetInfo))
 
 
-(def AsyncStorage (-> (js/require "react-native") .-AsyncStorage))
 
+
+(defn net-connected
+  "returns a channed of network connection events
+  events can be
+      :connected when network connects
+      :disconnected when network disconnects"
+  []
+  (let [out (async/chan)]
+    (-> NetInfo
+      .-isConnected
+      (.addEventListener "connect"
+        #(put! out (if % :connected :disconnected))))
+    out))
+
+
+(defn net-connected?
+  "Return a promise-chan that will have either
+  true or false based on wether or not the network is currently connected"
+  []
+  (let [handler (fn handler [] (-> NetInfo .-isConnected (.removeEventListener "connect" handler)))
+        out (promise-chan)]
+    (-> NetInfo
+      .-isConnected
+      (.addEventListener "connect" handler))
+    (-> NetInfo
+      .-isConnected
+      .fetch
+      (.then #(put! out %)))
+    out))
+
+(comment
+  (let [connection-info (net-connected)]
+    (go-loop []
+      (println (<! connection-info))
+      (recur)))
+  (gosafe
+    (println (<! (net-connected?)))))
 
 (defn save! "
    Saves a value by given key to local storage.

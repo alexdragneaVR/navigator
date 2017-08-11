@@ -7,6 +7,8 @@
     [vr.pixa.pixa-views :refer [screen-component]]))
 
 
+(enable-console-print!)
+
 (defn app-root []
   [screen-component @model])
 
