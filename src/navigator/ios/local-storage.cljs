@@ -29,8 +29,11 @@
   "Return a promise-chan that will have either
   true or false based on wether or not the network is currently connected"
   []
-  (let [handler (fn handler [] (-> NetInfo .-isConnected (.removeEventListener "connect" handler)))
-        out (promise-chan)]
+  (let [out (promise-chan)
+        handler (fn handler [connection]
+                  (put! out connection)
+                  (-> NetInfo .-isConnected
+                      (.removeEventListener "connect" handler)))]
     (-> NetInfo
       .-isConnected
       (.addEventListener "connect" handler))

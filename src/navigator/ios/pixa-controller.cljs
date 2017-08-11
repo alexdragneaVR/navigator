@@ -27,21 +27,23 @@
 (defn go-back [state]
   (update-in state [:context :status] pop))
 
-(defn swapm! [value atom]
-  (swap! atom (constantly value))
-  (go
-      (let [[ok _] (<! (ls/save! :pixa/model value))]
-        (if ok
-          (println "Model saved to local storage")
-          (println "Error in saveing model to local storage")))))
+(defn swapm!
+  ([value atom] (swapm! value atom false))
+  ([value atom save?]
+   (when save?
+     (go
+        (let [[ok _] (<! (ls/save! :pixa/model value))]
+          (if ok
+            (println "Model saved to local storage")
+            (println "Error in saveing model to local storage")))))
+   (swap! atom (constantly value))))
 
 (defn show-team [team-id]
   (print "show-team" team-id)
   (-> @model
       (go-to [:team team-id])
-      (swapm! model)))
+      (swapm! model :save)))
 
-(do @model)
 
 (defn load-topic [topic-id]
   (REST/POST< "/api/1/query/Topic"
@@ -78,14 +80,14 @@
             (assoc-in [:selected :project-id] project-id)
             (go-to [:topic project-id])
             (assoc-in current-path (first-val (<! (load-topic project-id))))
-            (swapm! model))
+            (swapm! model :save))
         (catch :default e (println e))))))
 
 (defn back []
   (print "back")
   (-> @model
       (go-back)
-      (swapm! model)))
+      (swapm! model :save)))
 
 (defn load-local-model [state [ok? local-value]]
   (if-not (or ok? (nil? local-value))
@@ -115,30 +117,31 @@
   state)
 
 
+(defn assoc-if-connected [state key value]
+  (-> state
+    (assoc :ta value)
+    ((fn [state]
+       (if (:ta state)
+         (-> state
+           (assoc key (:ta state))
+           (dissoc :ta))
+         state)))))
+
 (defn init []
   (println "init")
-  (go-loop []
-      (-> @model
-          (set-offline-status (= :connected (<! (ls/net-connected))))
-          ((fn [state] (swap! model (constantly state))))
-          (offline?)
-          (println "Status"))
-      (recur))
+
   (go
-    (-> @model
-      (pp "Loaded local shit")
-      (load-local-model (<! (ls/load! :pixa/model)))
-      ((fn [state] (println state) (swap! model (constantly state)))))
+    (let [connected-to-network? true #_(<! (ls/net-connected?))]
+      (println "connected" connected-to-network?)
+      (-> @model
+        (load-local-model (<! (ls/load! :pixa/model)))
+        (set-offline-status (not connected-to-network?))
+        (assoc-if-connected :teams (when connected-to-network? (<! (load-teams))))
+        (swapm! model :save)))
 
-    (let [connected-to-network? true]
-      (if-not connected-to-network?
+    (loop []
+      (let [connection-info (<! (ls/net-connected))]
         (-> @model
-            (set-offline-status true)
-            (pp "Offline")
+            (set-offline-status (= :connected connection-info))
             (swapm! model))
-
-        (-> @model
-            (set-offline-status false)
-            (assoc :teams (<! (load-teams)))
-            (pp "Online")
-            (swapm! model))))))
+        (recur)))))
