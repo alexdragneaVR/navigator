@@ -12,5 +12,8 @@
 (def animated-view (r/adapt-react-class (-> ReactNative .-Animated .-View)))
 (def touchable-highlight (r/adapt-react-class (.-TouchableHighlight ReactNative)))
 
-
 (def DataSource (.-DataSource (.-ListView ReactNative)))
+
+(defn animated-event [props]
+  (let [event-fn (-> ReactNative .-Animated .-event)]
+    (event-fn (clj->js props))))
