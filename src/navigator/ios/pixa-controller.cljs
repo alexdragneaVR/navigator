@@ -2,12 +2,19 @@
   (:require [reagent.core :as r]
             [vr.pixa.pixa-model :refer [model keywordize]]
             [vr.pixa.rest :as REST :refer [POST<]]
+            [vr.pixa.local-storage :as ls]
             [cljs.core.async :refer [<!]])
   (:require-macros [cljs.core.async.macros :refer [go]]))
 
 
-(defn swapm! [x y]
-  (swap! y (fn [xx] x)))
+
+(defn swapm! [value atom]
+  (swap! atom (constantly value))
+  (go
+    (let [[ok _] (<! (ls/save! :pixa/model value))]
+      (if ok
+        (println "Model saved to local storage")
+        (println "Error in saveing model to local storage")))))
 
 
 (defn show-team [team-id]
@@ -74,6 +81,13 @@
 (defn init []
   (print "init")
   (go
+    (let [[ok? value] (<! (ls/load! :pixa/model))]
+      (if ok?
+        (when-not (nil? value)
+          (swapm! value model))
+        (println "Error in loading model")))
+
+
     (-> @model
       (assoc :teams (<! (POST<
                           "/api/1/query/Team"
