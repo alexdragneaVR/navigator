@@ -8,7 +8,7 @@
   (r/atom
     {
       :context {
-                :status "list"
+                :status '([:teams])
                 :teams_filters_open? false
                 :projects_filters_open? false
                 :teams_open? true

@@ -52,15 +52,16 @@
               :title right-button}]
      [text ""])])
 
+
 (defn screen-component [state]
   (let [dataSource (data-source {:rowHasChanged not=})
         width (.-width (Dimensions.get "window"))
+        [page id] (controller/current-page state)
         offset (cond
-                     (= "list" (-> state :context :status)) 0
-                     (= "projects" (-> state :context :status)) -375
-                     (= "project" (-> state :context :status)) -750
+                     (= :teams page) 0
+                     (= :team page) -375
+                     (= :topic page) -750
                     :else 0)]
-
 
 
       [animated-view {:style {:flex-direction "row"
@@ -76,7 +77,7 @@
        [view {:style {:margin-top 20
                       :width width}}
         [header "Projects" "Back" "Add"]
-        (let [topics (-> state :teams (get (-> state :selected :team-id str keyword)) :topics vals)]
+        (let [topics (-> state :teams (get (-> id str keyword)) :topics vals)]
 
              [list-view {:items topics
                          :renderRow (partial list-view-item controller/show-project)}])]
