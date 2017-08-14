@@ -21,7 +21,7 @@
     (-> NetInfo
       .-isConnected
       (.addEventListener "connect"
-        #(put! out (if % :connected :disconnected))))
+        #(put! out [true (if % :connected :disconnected)])))
     out))
 
 
@@ -31,7 +31,7 @@
   []
   (let [out (promise-chan)
         handler (fn handler [connection]
-                  (put! out connection)
+                  (put! out [true (if connection :connected :disconnected)])
                   (-> NetInfo .-isConnected
                       (.removeEventListener "connect" handler)))]
     (-> NetInfo
@@ -40,7 +40,8 @@
     (-> NetInfo
       .-isConnected
       .fetch
-      (.then #(put! out %)))
+      (.then #(put! out (if % [true :connected] [true :disconnected])))
+      (.catch #(put! out [false %])))
     out))
 
 (comment

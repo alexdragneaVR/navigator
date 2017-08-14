@@ -129,8 +129,7 @@
 
   (let [connection-info (ls/net-connected)]
     (go
-      (let [connected-to-network? (<! (ls/net-connected?))]
-        (println "connected" connected-to-network?)
+      (let [[_ connected-to-network?] (<! (ls/net-connected?))]
         (-> @model
           (load-local-model (<! (ls/load! :pixa/model)))
           (set-network-status (if connected-to-network? :connected :disconnected))
@@ -140,6 +139,6 @@
 
       (loop []
         (-> @model
-            (set-network-status (<! connection-info))
+            (set-network-status (second (<! connection-info)))
             (swapm! model))
         (recur)))))
