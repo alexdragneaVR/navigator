@@ -48,7 +48,7 @@
     (go-loop []
       (println (<! connection-info))
       (recur)))
-  (gosafe
+  (go
     (println (<! (net-connected?)))))
 
 (defn save! "

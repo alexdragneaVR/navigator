@@ -13,10 +13,8 @@
   (apply println messages)
   true)
 
-(defn set-offline-status [state status]
-  {:pre [(pt "pre set-offline-status")]
-   :post [(pt "post set-offline-status")]}
-  (assoc-in state [:context :offline] status))
+(defn set-network-status [state status]
+  (assoc-in state [:context :network] status))
 
 (defn current-page [state]
   (peek (get-in state [:context :status])))
@@ -69,11 +67,10 @@
   (first (vals x)))
 
 (defn show-project [project-id]
-  (print "show-project" project-id)
   (let [[_ team-id] (current-page @model)
         current-path [:teams (keywordize team-id) :topics (keywordize project-id)]
-        topic (get-in @model current-path)]
-    (println current-path)
+        topic (get-in @model current-path)
+        connected-to-network? (-> @model :context :network (= :connected))]
     (go
       (try
         (-> @model
@@ -125,23 +122,24 @@
          (-> state
            (assoc key (:ta state))
            (dissoc :ta))
-         state)))))
+         (dissoc state :ta))))))
 
 (defn init []
   (println "init")
 
-  (go
-    (let [connected-to-network? true #_(<! (ls/net-connected?))]
-      (println "connected" connected-to-network?)
-      (-> @model
-        (load-local-model (<! (ls/load! :pixa/model)))
-        (set-offline-status (not connected-to-network?))
-        (assoc-if-connected :teams (when connected-to-network? (<! (load-teams))))
-        (swapm! model :save)))
-
-    (loop []
-      (let [connection-info (<! (ls/net-connected))]
+  (let [connection-info (ls/net-connected)]
+    (go
+      (let [connected-to-network? (<! (ls/net-connected?))]
+        (println "connected" connected-to-network?)
         (-> @model
-            (set-offline-status (= :connected connection-info))
+          (load-local-model (<! (ls/load! :pixa/model)))
+          (set-network-status (if connected-to-network? :connected :disconnected))
+          (swapm! model)
+          (assoc-if-connected :teams (when connected-to-network? (<! (load-teams))))
+          (swapm! model :save)))
+
+      (loop []
+        (-> @model
+            (set-network-status (<! connection-info))
             (swapm! model))
         (recur)))))

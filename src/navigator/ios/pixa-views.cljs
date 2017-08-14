@@ -53,8 +53,7 @@
 
 
 (defn screen-component [state]
-  (let [dataSource (data-source {:rowHasChanged not=})
-        width (.-width (Dimensions.get "window"))
+  (let [width (.-width (Dimensions.get "window"))
         [page id] (controller/current-page state)
         offset (cond
                      (= :teams page) 0
@@ -77,9 +76,9 @@
                       :width width}}
         [header "Projects" "Back" "Add"]
         (let [topics (-> state :teams (get (-> id str keyword)) :topics vals)]
+           [list-view {:items topics
+                       :renderRow (partial list-view-item controller/show-project)}])]
 
-             [list-view {:items topics
-                         :renderRow (partial list-view-item controller/show-project)}])]
        [view {:style {:margin-top 20
                       :width width}}
         [header "Details" "Back"]
