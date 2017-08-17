@@ -14,7 +14,7 @@
   ],
   "platforms": {
     "ios": {
-      "host": "10.0.1.30",
+      "host": "localhost",
       "modules": []
     },
     "android": {

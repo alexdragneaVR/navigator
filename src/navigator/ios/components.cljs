@@ -17,6 +17,7 @@
 (def touchable-opacity (r/adapt-react-class (.-TouchableOpacity ReactNative)))
 (def image (r/adapt-react-class (.-Image ReactNative)))
 (def camera-roll (.-CameraRoll ReactNative))
+(def web-view (r/adapt-react-class (.-WebView ReactNative)))
 ; (def camera (r/adapt-react-class (.-Camera ReactNativeCamera)))
 
 (def animated-value (r/adapt-react-class (-> ReactNative .-Animated .-Value)))

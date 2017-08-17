@@ -15,7 +15,7 @@
   (swap! cnt inc))
 
 (figwheel/watch-and-reload
- :websocket-url "ws://10.0.1.30:3449/figwheel-ws"
+ :websocket-url "ws://localhost:3449/figwheel-ws"
  :heads-up-display true
  :jsload-callback force-reload!)
 
