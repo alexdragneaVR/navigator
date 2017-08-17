@@ -15,7 +15,7 @@
     (events/listen request "complete" (fn []
                                         (let [response (js->clj (.getResponseJson request) :keywordize-keys true)]
                                           (put! result (:data response))
-                                          (println "received response" result))))
+                                          (println "received response" response))))
     (println "POST" url json)
     (.send request url "POST" (.stringify js/JSON (clj->js json)) #js{"Content-Type" "application/json"
                                                                       "Cookie" token})

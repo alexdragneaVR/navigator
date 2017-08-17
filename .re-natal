@@ -5,13 +5,16 @@
     "dev": "env/dev",
     "prod": "env/prod"
   },
-  "modules": [],
+  "modules": [
+    "react-native",
+    "react-native-image-picker"
+  ],
   "imageDirs": [
     "images"
   ],
   "platforms": {
     "ios": {
-      "host": "localhost",
+      "host": "10.0.1.30",
       "modules": []
     },
     "android": {
