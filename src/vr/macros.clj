@@ -4,7 +4,7 @@
   (let [e (gensym "e-")]
     `(try ~@body
       (catch :default ~e
-        (add-error ~e)))))
+        (vr.pi/add-error ~e)))))
 
 
 (defmacro gosafe [& body]

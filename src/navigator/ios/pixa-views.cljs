@@ -1,7 +1,8 @@
 (ns vr.pixa.pixa-views
   (:require [reagent.core :as r]
             [vr.pixa.pixa-controller :as controller]
-            [vr.pixa.components :refer [ReactNative text view button rn-list-view scroll-view animated-view animated-event touchable-highlight DataSource]]))
+            [vr.pixa.components :as components
+                                :refer [ReactNative text view button rn-list-view scroll-view animated-view animated-event touchable-highlight DataSource]]))
 
 ; styles
 
@@ -82,4 +83,7 @@
        [view {:style {:margin-top 20
                       :width width}}
         [header "Details" "Back"]
-        [text "project details"]]]))
+        [components/web-3d-view {:url "web/not_3d/index.html"
+                                 :style {:flex 1}
+                                 :action-input controller/web-view-in
+                                 :action-output controller/web-view-out}]]]))

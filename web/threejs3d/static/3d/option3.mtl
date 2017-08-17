@@ -1,0 +1,9 @@
+# vrStore MTL Model File
+
+newmtl Material_1
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.2098 0.0843 0.0598
+Ns 314
+map_Kd ./option3/Pattern_Shirt_1.jpg
+

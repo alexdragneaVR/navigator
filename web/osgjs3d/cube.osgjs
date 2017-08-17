@@ -1,0 +1,165 @@
+{
+  "Generator": "OpenSceneGraph 3.5.6",
+  "Version": 9,
+  "osg.Node": {
+    "Children": [ {
+      "osg.Node": {
+        "UniqueID": 0,
+        "Name": "cube.obj",
+        "Children": [ {
+          "osg.Node": {
+            "UniqueID": 1,
+            "Name": "Cube",
+            "Children": [ {
+              "osg.Geometry": {
+                "UniqueID": 2,
+                "PrimitiveSetList": [ {
+                  "DrawElementsUShort": {
+                    "UniqueID": 7,
+                    "Indices": {
+                      "UniqueID": 8,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 1, 2, 0, 3 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 9,
+                    "Indices": {
+                      "UniqueID": 10,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 7, 4, 6, 5 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 11,
+                    "Indices": {
+                      "UniqueID": 12,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 23, 20, 22, 21 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 13,
+                    "Indices": {
+                      "UniqueID": 14,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 19, 16, 18, 17 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 15,
+                    "Indices": {
+                      "UniqueID": 16,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 13, 14, 12, 15 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 17,
+                    "Indices": {
+                      "UniqueID": 18,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 9, 10, 8, 11 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                } ],
+                "StateSet": {
+                  "osg.StateSet": {
+                    "UniqueID": 3,
+                    "AttributeList": [ {
+                      "osg.Material": {
+                        "UniqueID": 4,
+                        "Name": "Material",
+                        "Ambient": [ 1, 1, 1, 1],
+                        "Diffuse": [ 0.64, 0.64, 0.64, 1],
+                        "Emission": [ 0, 0, 0, 1],
+                        "Shininess": 12.288,
+                        "Specular": [ 0.5, 0.5, 0.5, 1]
+                      }
+                    } ]
+                  }
+                },
+                "VertexAttributeList": {
+                  "Normal": {
+                    "UniqueID": 6,
+                    "Array": { 
+                      "Float32Array": { 
+                        "Elements": [ 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, -0, -1, -0, -0, -1, -0, -0, -1, -0, -0, -1, -0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0 ],
+                        "Size": 24
+                      }
+                    },
+                    "ItemSize": 3,
+                    "Type": "ARRAY_BUFFER"
+                  },
+                  "Vertex": {
+                    "UniqueID": 5,
+                    "Array": { 
+                      "Float32Array": { 
+                        "Elements": [ 0.642711, 1.26075, -0.132161, 0.642711, -0.739246, -0.132161, -1.35729, -0.739246, -0.132161, -1.35729, 1.26075, -0.132161, 0.642711, 1.26075, 1.86784, -1.35729, 1.26075, 1.86784, -1.35729, -0.739246, 1.86784, 0.64271, -0.739247, 1.86784, 0.642711, 1.26075, -0.132161, 0.642711, 1.26075, 1.86784, 0.64271, -0.739247, 1.86784, 0.642711, -0.739246, -0.132161, 0.642711, -0.739246, -0.132161, 0.64271, -0.739247, 1.86784, -1.35729, -0.739246, 1.86784, -1.35729, -0.739246, -0.132161, -1.35729, -0.739246, -0.132161, -1.35729, -0.739246, 1.86784, -1.35729, 1.26075, 1.86784, -1.35729, 1.26075, -0.132161, 0.642711, 1.26075, 1.86784, 0.642711, 1.26075, -0.132161, -1.35729, 1.26075, -0.132161, -1.35729, 1.26075, 1.86784 ],
+                        "Size": 24
+                      }
+                    },
+                    "ItemSize": 3,
+                    "Type": "ARRAY_BUFFER"
+                  }
+                }
+              }
+            } ]
+          }
+        } ]
+      }
+    } ]
+  }
+}

@@ -1,0 +1,9 @@
+# vrStore MTL Model File
+
+newmtl Material_1
+Ka 1 1 1
+Kd 1 1 1
+Ks 0.1549 0.1529 0.0941
+Ns 314
+map_Kd ./option2/Active_Dress_1.jpg
+

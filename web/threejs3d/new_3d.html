@@ -1,0 +1,1575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+	<style>
+		body {
+			font-family: sans-serif;
+			font-size: 13px;
+			background-color: #FFFFFF;
+			color: #000;
+			margin: 0px;
+			overflow: hidden;
+		}
+
+		#info {
+			color: #fff;
+			position: absolute;
+			top: 10px;
+			width: 100%;
+			text-align: center;
+			z-index: 100;
+			display: block;
+		}
+
+		#info a,
+		.button {
+			color: #f00;
+			font-weight: bold;
+			text-decoration: underline;
+			cursor: pointer
+		}
+
+		#loading {
+			width: 100%;
+			height: 100%;
+			margin: 0px auto;
+			text-align: center;
+			vertical-align: middle;
+		}
+
+		#div_zoom img {
+			background-color: #fff;
+			border: solid 1px #999;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		#div_zoom img:hover {
+			opacity: 0.8;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="info">
+	</div>
+	<div id="loading" style="display:block;margin-top:312px">
+		<img id="loading" src="static/images/ajax-loader.gif" style="width:24px;height:24px;">
+		<div id="loading_message">Loading...</div>
+	</div>
+
+	<div id="performance_stats" style="display:block;margin-top:0px;margin-left: 0px;z-index: 100px;position:absolute">
+		<div id="fps_counter_title">FPS...</div>
+		<div id="fps_counter_fps"></div>
+		<div id="loading_time_title">Loading time...</div>
+		<div id="loading_time_time"></div>
+
+	</div>
+
+	<script src="static/_new_3d/three.min.js"></script>
+
+	<script src="static/_new_3d/VRMTLLoader.js"></script>
+	<script src="static/_new_3d/VROBJLoader.js"></script>
+
+	<script src="static/3d/Detector.js"></script>
+	<script src="static/3d/stats.min.js"></script>
+	<script src="static/js/jquery.min.js"></script>
+
+	<script>
+		function debounce(func, wait, immediate) {
+			var timeout;
+			return function() {
+				var context = this,
+					args = arguments;
+				var later = function() {
+					timeout = null;
+					if (!immediate) func.apply(context, args);
+				};
+				var callNow = immediate && !timeout;
+				clearTimeout(timeout);
+				timeout = setTimeout(later, wait);
+				if (callNow) func.apply(context, args);
+			};
+		}
+
+		var ReactNativeComms = {
+			_queue: [],
+			_postMessage: function(m) {
+				if (window.postMessage && window.postMessage.length === 1) {
+					window.postMessage(m);
+					return;
+				}
+				console.info("DEBUG MODE", m);
+			},
+			_flushQueue: debounce(function flushQueue() {
+				var queue = this._queue;
+				var that = this;
+				setTimeout(function() {
+					var fn = queue.shift();
+					if (fn) {
+						fn();
+						flushQueue.call(that);
+					}
+				}, 10);
+			}, 100),
+			/**
+			 * Attaches a message handler that is called when a React Native message is received
+			 *    fn - the message handler
+			 *    ctx? - optional context object (i.e the 'this' of the fn)
+			 */
+			addReactNativeEventListener: function(fn, ctx) {
+				document.addEventListener("message", function(e) {
+					try {
+						fn.call(ctx, JSON.parse(e.data));
+					} catch (e) {
+						fn.call(ctx, null, e);
+					}
+				});
+			},
+			addReactNativeEventListenerOnce: function(event, fn, ctx) {
+				this.addReactNativeEventListener(function once(e) {
+					if (e.data.event === event) {
+						fn.call(ctx, e);
+						this.removeReactNativeEventListener(once);
+					}
+				}, this);
+			},
+			removeReactNativeEventListener: function(fn) {
+				document.removeEventListener("message", fn);
+			},
+			postToReactNative : function(data){
+				var value = JSON.stringify({
+					data : data
+				});
+				try{
+					this._postMessage(value);
+				}catch (e){
+					console.error("Error in posting message to react native");
+					console.trace(e);
+				}
+			},
+			/**
+			 * Send a message to react native. message can be any valid json value.
+			 *    data - any valid json value except functions
+			 */
+			loadUrl: function(event, url) {
+				var value = JSON.stringify({
+					data: {
+						event : event,
+						url : url
+					}
+				});
+				var that = this;
+				this._queue.push(function() {
+					console.log("posting message", value);
+					try {
+						that._postMessage(value);
+					} catch (e) {
+						console.error("Error in loading url " + url);
+						console.trace(e);
+						return Promise.reject(e);
+					}
+				});
+				this._flushQueue();
+				return new Promise(function(resolve){
+					that.addReactNativeEventListener(function loaded(e){
+						if(e.data.url === url && e.data.event === event){
+							that.removeReactNativeEventListener(loaded);
+							resolve(e.data);
+						}
+					})
+				});
+			},
+
+		};
+
+		document.addEventListener("DOMContentLoaded", function() {
+
+			function ReactNativeLoader(event, manager){
+				this.event = event;
+				this.manager = manager;
+
+			}
+			ReactNativeLoader.prototype.load = function(url, onLoad, onProgress, onError){
+				var scope = this;
+				var cache = THREE.Cache;
+
+				var cached = cache.get(url);
+
+				scope.manager.itemStart(url);
+
+				if (cached) {
+					setTimeout(function() {
+						if (onLoad) {
+							onLoad(cached);
+						}
+						scope.manager.itemEnd(url);
+					}, 100);
+				} else {
+
+					ReactNativeComms.loadUrl(this.event, url).then(function(e){
+						if(onLoad){
+							onLoad(e.data);
+						}
+						cache.add(url, e.data);
+						scope.manager.itemEnd(url);
+					}, function(e){
+						scope.manager.itemError(url);
+						scope.manager.itemEnd(url);
+					});
+				}
+			};
+
+			function ReactNativeTextureLoader(manager){
+				this.loader = new ReactNativeLoader("load-texture", manager);
+			}
+
+			ReactNativeTextureLoader.prototype.load = function(url, onLoad, onProgress, onError){
+				var scope = this.loader;
+				var texture = new THREE.Texture();
+				var image = document.createElementNS( 'http://www.w3.org/1999/xhtml', 'img' );
+
+				this.loader.load(url, function(imageData){
+
+					image.addEventListener( 'load', function () {
+						if ( onLoad ) onLoad( texture );
+
+						var isJPEG = imageData.search( /\.(jpg|jpeg)$/ ) > 0 || imageData.search( /^data\:image\/jpeg/ ) === 0;
+						texture.format = isJPEG ? THREE.RGBFormat : THREE.RGBAFormat;
+						texture.needsUpdate = true;
+
+					}, false );
+					image.src = imageData;
+					texture.image = image;
+
+					return texture;
+				}, onProgress, onError);
+
+				return texture;
+			};
+
+			var prefix = "static/3d/"
+			var id = "fixture1";
+
+
+			var products = {
+				"fixture1": {
+					"Active_Dress_1.jpg": {
+						"name": "Active Dress",
+						"description": "3212344",
+						"quantity": "10"
+					},
+					"Floral_Dress_1.jpg": {
+						"name": "Floral Dress",
+						"description": "3212345",
+						"quantity": "10"
+					},
+					"Pattern_Shirt_1.jpg": {
+						"name": "Pattern Shirt",
+						"description": "3212346",
+						"quantity": "10"
+					},
+					"Cotton_Top_1.jpg": {
+						"name": "Cotton Top",
+						"description": "3212347",
+						"quantity": "10"
+					}
+				},
+				"1": {
+					"Top_Stripe_6.jpg": {
+						"name": "Top Stripe",
+						"description": "435756685675",
+						"quantity": "6"
+					},
+					"Longsleeve_5.jpg": {
+						"name": "Longsleeve",
+						"description": "6586484",
+						"quantity": "5"
+					},
+					"Dress_2.jpg": {
+						"name": "Dress",
+						"description": "56785648",
+						"quantity": "6"
+					},
+					"Pantalon_1.jpg": {
+						"name": "Pantalon",
+						"description": "5673658",
+						"quantity": "7"
+					},
+					"Jumpsuit_3.jpg": {
+						"name": "Jumpsuit",
+						"description": "4564325756",
+						"quantity": "9"
+					}
+				},
+				"2": {
+					"Top_Stripe_3.jpg": {
+						"name": "Top Stripe",
+						"description": "3212344",
+						"quantity": "8"
+					},
+					"Cardigan_6.jpg": {
+						"name": "Cardigan",
+						"description": "342312",
+						"quantity": "6"
+					},
+					"Pantalon_9.jpg": {
+						"name": "Pantalon",
+						"description": "23217878",
+						"quantity": "6"
+					},
+					"Cardigan_8.jpg": {
+						"name": "Cardigan",
+						"description": "845642362",
+						"quantity": "4"
+					},
+					"Top__2.jpg": {
+						"name": "Top",
+						"description": "4234436",
+						"quantity": "7"
+					},
+					"Shirt_Dots_5.jpg": {
+						"name": "Shirt Dots",
+						"description": "4234436",
+						"quantity": "6"
+					},
+					"Black_Skirt_7.jpg": {
+						"name": "Black Skirt",
+						"description": "4234436",
+						"quantity": "6"
+					}
+				},
+				"3": {
+					"Men_s_Sweat_10.jpg": {
+						"name": "Men's Pullover",
+						"description": "B71261",
+						"quantity": "5"
+					},
+					"Fermo_Jeans__9.jpg": {
+						"name": "Fermo Jeans",
+						"description": "17257",
+						"quantity": "3"
+					},
+					"Denim_Jacket__8.jpg": {
+						"name": "Denim Jacket",
+						"description": "A71099",
+						"quantity": "3"
+					},
+					"Men_s_Shirt_Is_7.jpg": {
+						"name": "Men's Shirt Is",
+						"description": "B71227",
+						"quantity": "3"
+					},
+					"Savio_6.jpg": {
+						"name": "Savio",
+						"description": "19467",
+						"quantity": "3"
+					},
+					"T_shirt__5.jpg": {
+						"name": "T-shirt",
+						"description": "B71211",
+						"quantity": "3"
+					},
+					"Men_s_Pullover__4.jpg": {
+						"name": "Men's Pullover",
+						"description": "B71250",
+						"quantity": "3"
+					}
+				},
+				"old_3": {
+					"T_Shirt_6.jpg": {
+						"name": "T Shirt 6",
+						"description": "342624536245",
+						"quantity": "6"
+					},
+					"Pattern_Shirt_5.jpg": {
+						"name": "Pattern Shirt 5",
+						"description": "34642562456",
+						"quantity": "6"
+					},
+					"Polo_Shirt_4.jpg": {
+						"name": "Polo Shirt 4",
+						"description": "42564527",
+						"quantity": "6"
+					},
+					"Vest_Longsleeve_3.jpg": {
+						"name": "Vest Longsleeve 3",
+						"description": "345645274",
+						"quantity": "6"
+					}
+				},
+				"old_1_1": {
+					"Bolero_aus_Feinstrick_9.jpg": {
+						"name": "Bolero aus Feinstrick 9",
+						"description": "328742735",
+						"quantity": "5"
+					},
+					"Bolero_aus_Feinstrick_10.jpg": {
+						"name": "Bolero aus Feinstrick 10",
+						"description": "657456745",
+						"quantity": "5"
+					},
+					"Edler_Mantel_mit_Material_Mix_5.jpg": {
+						"name": "Edler Mantel mit Material Mix 5",
+						"description": "346245654",
+						"quantity": "6"
+					},
+					"L_ssiger_Sweater_mit_weitem_Rollkragen_7.jpg": {
+						"name": "L ssiger Sweater mit weitem Rollkragen 7",
+						"description": "9769568",
+						"quantity": "6"
+					},
+					"Leichter_Strick_Sweater_2.jpg": {
+						"name": "Leichter Strick Sweater 2",
+						"description": "4234436",
+						"quantity": "6"
+					},
+					"Strickjacke_mit_offener_Front_8.jpg": {
+						"name": "Strickjacke mit offener Front 8",
+						"description": "4234436",
+						"quantity": "6"
+					},
+					"Strickjacke_mit_Schalkragen_1.jpg": {
+						"name": "Strickjacke mit Schalkragen 1",
+						"description": "4234436",
+						"quantity": "4"
+					},
+					"Taillierter_Pullover_mit_V_Ausschnitt_4.jpg": {
+						"name": "Taillierter Pullover mit V Ausschnitt 4",
+						"description": "4234436",
+						"quantity": "4"
+					},
+					"Oversized_Pullover_in_Crepe_Optik_3.jpg": {
+						"name": "Oversized Pullover in Crepe Optik 3",
+						"description": "5674687689",
+						"quantity": "6"
+					}
+				},
+				"old_1": {
+					"Blazer_1.jpg": {
+						"name": "Blazer 1",
+						"description": "328742735",
+						"quantity": "6"
+					},
+					"Blazer_2.jpg": {
+						"name": "Blazer 2",
+						"description": "657456745",
+						"quantity": "6"
+					},
+					"Blazer_3.jpg": {
+						"name": "Blazer 3",
+						"description": "346245654",
+						"quantity": "13"
+					},
+					"Pattern_Shirt_8.jpg": {
+						"name": "Pattern Shirt 8",
+						"description": "9769568",
+						"quantity": "4"
+					},
+					"Polo_Top_6.jpg": {
+						"name": "Polo Top 6",
+						"description": "4234436",
+						"quantity": "4"
+					},
+					"Top_sleeveless_5.jpg": {
+						"name": "Top sleeveless 5",
+						"description": "5674687689",
+						"quantity": "4"
+					}
+				},
+				"2_old": {
+					"Tiered_embroidery_Skirt_2.jpg": {
+						"name": "Tiered embroidery Skirt 2",
+						"description": "435756685675",
+						"quantity": "8"
+					},
+					"Tiered_long_Skirt_11.jpg": {
+						"name": "Tiered long Skirt 11",
+						"description": "6586484",
+						"quantity": "6"
+					},
+					"Pocket_Shirt_10.jpg": {
+						"name": "Pocket Shirt 10",
+						"description": "56785648",
+						"quantity": "6"
+					},
+					"Bustier_Dress_9.jpg": {
+						"name": "Bustier Dress 9",
+						"description": "5673658",
+						"quantity": "5"
+					},
+					"Blouse_6.jpg": {
+						"name": "Blouse 6",
+						"description": "4564325756",
+						"quantity": "5"
+					},
+					"Chino_Pants_7.jpg": {
+						"name": "Chino Pants 7",
+						"description": "426245762547",
+						"quantity": "5"
+					},
+					"Jeans_Straight_Leg_8.jpg": {
+						"name": "Jeans Straight Leg 8",
+						"description": "436245735",
+						"quantity": "5"
+					},
+					"Jeans_Straight_Leg_3.jpg": {
+						"name": "Jeans Straight Leg 3",
+						"description": "3246245675",
+						"quantity": "8"
+					}
+				}
+			}
+
+			var fps = {
+				startTime: 0,
+				frameNumber: 0,
+				getFPS: function() {
+					this.frameNumber++;
+					var d = new Date().getTime(),
+						currentTime = (d - this.startTime) / 1000,
+						result = Math.floor((this.frameNumber / currentTime));
+					if (currentTime > 1) {
+						this.startTime = new Date().getTime();
+						this.frameNumber = 0;
+					}
+					return result;
+				}
+			};
+
+			var f = document.querySelector("#fps_counter_fps");
+			var g = document.querySelector("#loading_time_time");
+			var time_start, time_end;
+
+			var container, stats;
+
+			var mouseDown = false,
+				mouseMove = false,
+				mouseX = 0,
+				mouseY = 0;
+			var camera, scene, renderer;
+			var rotate = true;
+			var touchstate = {
+				NONE: -1,
+				ROTATE: 0,
+				DOLLY: 1,
+				PAN: 2,
+				TOUCH_ROTATE: 3,
+				TOUCH_DOLLY: 4,
+				TOUCH_PAN: 5
+			};
+			var state = {};
+			state.touchstate = touchstate.NONE;
+
+			var mouseX = 0,
+				mouseY = 0;
+
+			var windowHalfX = window.innerWidth / 2;
+			var windowHalfY = window.innerHeight / 2;
+
+			var dollyStart = new THREE.Vector2();
+			var dollyEnd = new THREE.Vector2();
+			var dollyDelta = new THREE.Vector2();
+
+			var rotation = 0;
+
+			var mouse = {
+					x: 0,
+					y: 0
+				},
+				INTERSECTED;
+
+
+			init();
+			animate();
+
+
+			var xAxis = new THREE.Vector3(0, 1, 0);
+			var fixtures = [];
+
+			function hideLoading() {
+
+				//3d Loaded, hide loading img
+				var div = document.getElementById("loading");
+				div.style.display = "none";
+
+			}
+
+			function setLoadingMessage(message) {
+				console.log(message);
+				//3d Loaded, hide loading img
+				//                $("#loading_message").text(message);#}
+
+			}
+
+
+
+			function createOptionGroup(matrixes, x, y, texture, folded, insertionPoint, scale, imageWidth, imageHeight, initialImageWidth, initialImageHeight, depth, product_id, medium_color) {
+				var material = materials[texture];
+				var selectedMaterial;
+				if (material instanceof THREE.ShaderMaterial) {
+					selectedMaterial = materials[texture + "_selected"];
+				} else {
+					selectedMaterial = material.clone();
+					selectedMaterial.color.setHex(0x00ff00);
+					selectedMaterial.emissive.setHex(0x00ff00);
+				}
+
+
+				//geometry
+				var geometry = createOptionGeometry(x, y, folded, scale, insertionPoint, imageWidth, imageHeight, initialImageWidth, initialImageHeight, depth);
+
+
+				var result = []
+				//options in positions
+				createMeshAndApplyMatrixes(matrixes, geometry, material, function(opt) {
+					opt.product_id = product_id;
+					opt.folded = folded;
+					opt.name = texture;
+					opt.insertionPoint = insertionPoint;
+					opt.unselectedMaterial = material;
+					opt.selectedMaterial = selectedMaterial;
+					result.push(opt);
+				})
+
+
+				return result;
+
+			}
+
+			function addObject(object) {
+
+				p1 = new THREE.Object3D();
+				scene.add(p1);
+				fixtures.push(p1);
+
+				p2 = new THREE.Object3D();
+				p1.add(p2);
+
+				p2.add(object);
+
+
+				p1.rotation.y = -30 * Math.PI / 180;
+				p1.rotation.x = 25 * Math.PI / 180;
+			}
+
+			function getBoundingBox(object) {
+				if (object instanceof THREE.Object3D) {
+
+					var minX = null;
+					object.traverse(function(mesh) {
+
+						if (mesh instanceof THREE.Mesh) {
+							mesh.geometry.computeBoundingBox();
+							var bBox = mesh.geometry.boundingBox;
+
+							if (!minX) {
+								minX = bBox.min.x;
+								minY = bBox.min.y;
+								minZ = bBox.min.z;
+								maxX = bBox.max.x;
+								maxY = bBox.max.y;
+								maxZ = bBox.max.z;
+							}
+
+							// compute overall bbox
+							minX = Math.min(minX, bBox.min.x);
+							minY = Math.min(minY, bBox.min.y);
+							minZ = Math.min(minZ, bBox.min.z);
+							maxX = Math.max(maxX, bBox.max.x);
+							maxY = Math.max(maxY, bBox.max.y);
+							maxZ = Math.max(maxZ, bBox.max.z);
+
+						}
+					});
+
+					var bBox_min = new THREE.Vector3(minX, minY, minZ);
+					var bBox_max = new THREE.Vector3(maxX, maxY, maxZ);
+					var bBox_new = new THREE.Box3(bBox_min, bBox_max);
+
+					return bBox_new;
+				}
+			}
+
+			function format(obj, property) {
+				var formatted = obj[property].map(function(v) {
+					return Math.round(v * 100) / 100
+				});
+				obj[property] = formatted;
+			}
+
+			function jsonify(option) {
+				var json = new THREE.Geometry().fromBufferGeometry(option.geometry).toJSON();
+				format(json.data, "vertices");
+				format(json.data, "normals"); //                format(json.data,"uvs");#}
+				return JSON.stringify(json);
+			}
+
+			function onProgress(xhr) {
+				if (xhr.lengthComputable) {
+					var percentComplete = xhr.loaded / xhr.total * 100;
+					console.log(new Date().getTime(), Math.round(percentComplete, 2) + '% downloaded');
+				}
+			};
+
+			function onError(xhr) {};
+
+			function startWith(state) {
+				var dfd = $.Deferred();
+				dfd.resolve(state);
+				return dfd.promise();
+			}
+
+			function fileLoaderFactory(loader) {
+				var l = new THREE.FileLoader(loader.manager);
+				l.setPath(loader.path);
+				return l;
+			}
+
+			function defaultTextureLoaderFactory(scope, url){
+
+				var loader = THREE.Loader.Handlers.get( url );
+				var manager = ( scope.manager !== undefined ) ? scope.manager : THREE.DefaultLoadingManager;
+
+				if ( loader === null ) {
+
+					loader = new THREE.TextureLoader( manager );
+
+				}
+
+				if ( loader.setCrossOrigin ) loader.setCrossOrigin( this.crossOrigin );
+
+				return loader;
+			}
+
+			function reactNativeTextureLoaderFactory(scope){
+				return new ReactNativeTextureLoader(scope.manager);
+			}
+
+			function reactNativeMaterialLoaderFactory(scope) {
+				return new ReactNativeLoader("load-material",scope.manager);
+			}
+
+			function reactNativeObjLoaderFactory(scope){
+				return new ReactNativeLoader("load-obj", scope.manager);
+			}
+
+
+			function load(prefix, name, state) {
+				var dfd = $.Deferred();
+
+				var mtlLoader = new THREE.VRMTLLoader(THREE.DefaultLoadingManager, reactNativeMaterialLoaderFactory, reactNativeTextureLoaderFactory);
+				mtlLoader.setPath(prefix);
+				mtlLoader.load(name + '.mtl', function(materials) {
+					materials.preload();
+					var objLoader = new THREE.VROBJLoader(THREE.DefaultLoadingManager, reactNativeObjLoaderFactory);
+					objLoader.setMaterials(materials);
+					objLoader.setPath(prefix)
+					objLoader.load(name + '.obj', function(object) {
+						state[name] = object;
+						dfd.resolve(state);
+					}, onProgress, onError);
+				});
+
+				return dfd.promise();
+
+			}
+
+
+
+
+			function load_material(prefix, name) {
+				return function(state) {
+					return new Promise(function(resolve, reject) {
+
+						var mtlLoader = new THREE.VRMTLLoader(THREE.DefaultLoadingManager, reactNativeMaterialLoaderFactory, reactNativeTextureLoaderFactory);
+						mtlLoader.setPath(prefix);
+						console.log("loading", name)
+						mtlLoader.load(name + '.mtl', function(materials) {
+							materials.preload();
+							state[name + ".mtl"] = materials;
+							resolve(state);
+						});
+
+					});
+				}
+			}
+
+
+
+			function load_obj(prefix, name) {
+				return function(state) {
+					return new Promise(function(resolve, reject) {
+						var materials = state[name + ".mtl"];
+						var objLoader = new THREE.VROBJLoader(THREE.DefaultLoadingManager, reactNativeObjLoaderFactory);
+						objLoader.setMaterials(materials);
+						objLoader.setPath(prefix)
+						objLoader.load(name + '.obj', function(object) {
+							state[name + ".obj"] = object;
+							resolve(state);
+						});
+					});
+				}
+			}
+
+			function calculate_mesh_position(obj) {
+				bb = getBoundingBox(obj);
+				obj.position.x = -(bb.min.x + (bb.max.x - bb.min.x) / 2);
+				obj.position.y = -(bb.min.y + (bb.max.y - bb.min.y) / 2);
+				obj.position.z = -(bb.min.z + (bb.max.z - bb.min.z) / 2);
+				return obj;
+			}
+
+			function init() {
+
+				container = document.createElement('div');
+				document.body.appendChild(container);
+
+				//camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 6000 );
+				//camera.position.z = 300;
+
+				camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 10000);
+				camera.position.z = 350;
+
+				// scene
+				scene = new THREE.Scene();
+
+				//lights
+				var ambient = new THREE.AmbientLight(0xafafaf);
+				scene.add(ambient);
+
+				//var directionalLight = new THREE.DirectionalLight( 0xffffff, 0.5 );
+				//directionalLight.position.set( 0, 0, -1 ).normalize();
+				//scene.add( directionalLight );
+
+				var plight1 = new THREE.PointLight(0xffffff, 1, 1000);
+				plight1.position.set(600, 0, 300);
+				scene.add(plight1);
+				var plight2 = new THREE.PointLight(0xffffff, 1, 1000);
+				plight2.position.set(0, 600, 300);
+				scene.add(plight2);
+				var plight3 = new THREE.PointLight(0xffffff, 1, 1600);
+				plight3.position.set(960, 960, 300);
+				scene.add(plight3);
+
+
+
+
+
+				axis = new THREE.AxisHelper(2500);
+				scene.add(axis);
+
+				//obj loader
+
+
+
+				var name = id;
+
+
+
+				time_start = Date.now();
+				(load_material(prefix, name))(state)
+				.then(load_obj(prefix, name))
+					.then(function(state) {
+						setLoadingMessage("Loaded fixture");
+						var object = state[name + ".obj"];
+						object = calculate_mesh_position(object);
+						addObject(object);
+						hideLoading();
+						return state;
+					})
+					.then(function(state) {
+							setLoadingMessage("Loading options");
+
+							return Promise.all([
+								load_material(prefix, "option1")(state),
+								load_material(prefix, "option2")(state),
+								load_material(prefix, "option3")(state),
+								load_material(prefix, "option4")(state)
+							])
+						}
+
+					)
+					.then(function create_options(all_states) {
+						var state = all_states[0];
+						return state;
+					})
+					.then(function(state) {
+						return Promise.all([
+							load_obj(prefix, "option1")(state),
+							load_obj(prefix, "option2")(state),
+							load_obj(prefix, "option3")(state),
+							load_obj(prefix, "option4")(state)
+						])
+					})
+					.then(function create_options(all_states) {
+						setLoadingMessage("Loaded options");
+						var state = all_states[0];
+						add_option(state, "1", "option1", -133, 100, -28, true, false);
+						add_option(state, "2", "option2", -88, 100, -28, true, false);
+						add_option(state, "3", "option3", -37, 8, -8, false, false);
+						add_option(state, "4", "option4", 16, 62, -8, false, false);
+						handle_containers();
+
+						hideLoading();
+						time_end = Date.now();
+						g.innerHTML = time_end - time_start;
+						return state;
+					});
+
+
+				function handle_containers() {
+					var container_geometry1 = new THREE.BoxGeometry(40, 40, 40);
+					var container_material1 = new THREE.MeshPhongMaterial({
+						color: 0xFF00FF,
+						opacity: 0.2,
+						transparent: true
+					});
+					var container1 = new THREE.Mesh(container_geometry1, container_material1);
+					container1.id_container = 1;
+					container1.name = "container1";
+					container1.is_hanging = false;
+					container1.position.x += 73;
+					container1.position.y += 50;
+					fixtures[0].add(container1);
+
+					var container_geometry2 = new THREE.BoxGeometry(40, 40, 40);
+					var container_material2 = new THREE.MeshPhongMaterial({
+						color: 0xFF00FF,
+						opacity: 0.2,
+						transparent: true
+					});
+					var container2 = new THREE.Mesh(container_geometry2, container_material2);
+					container2.id_container = 2;
+					container2.name = "container2";
+					container2.is_hanging = false;
+					container2.position.x += 73;
+					container2.position.y -= 53;
+					fixtures[0].add(container2);
+
+					var container_geometry3 = new THREE.BoxGeometry(43, 90, 40);
+					var container_material3 = new THREE.MeshPhongMaterial({
+						color: 0xFF00FF,
+						opacity: 0.2,
+						transparent: true
+					});
+					var container3 = new THREE.Mesh(container_geometry3, container_material3);
+					container3.id_container = 3;
+					container3.name = "container3";
+					container3.is_hanging = true;
+					container3.position.x += 20;
+					container3.position.y += 15;
+					fixtures[0].add(container3);
+				}
+
+
+				//				renderer = new THREE.WebGLRenderer({antialias: true, useDevicePixelRatio: 1 });#}
+				renderer = new THREE.WebGLRenderer({
+					antialias: true
+				});
+				renderer.setPixelRatio(2);
+				renderer.setClearColor(0xffffff, 1);
+				renderer.setSize(window.innerWidth, window.innerHeight);
+				container.appendChild(renderer.domElement);
+
+
+				//mouse
+				addMouseHandler(renderer.domElement);
+
+				//resize
+				window.addEventListener('resize', onWindowResize, false);
+
+
+			}
+
+
+			function attach_option_data(opt, container_id, product_id, folded, texture, insertionPoint) {
+				opt.container_id = container_id;
+				opt.product_id = product_id;
+				opt.folded = folded;
+				opt.name = texture;
+				opt.insertionPoint = insertionPoint;
+				//                    opt.unselectedMaterial = material;#}
+				//                    opt.selectedMaterial = selectedMaterial;#}
+			}
+
+			function add_option(state, container_id, name, x, y, z, is_hanging, after_init) {
+				if (after_init == false) {
+					var object = state[name + ".obj"].children[0].clone();
+					attach_option_data(object, container_id, name, !is_hanging, name, null); // state[name+".mtl"])
+					object.rotateX(is_hanging ? Math.PI / 2 : 0);
+					object.geometry.center();
+					object.visible = true;
+					state["fixture1.obj"].add(object);
+
+					for (var i = 1; i < 5; i++) {
+						var mesh = object.clone();
+						mesh.visible = true;
+						mesh.position.x = x;
+						mesh.position.y = y;
+						mesh.position.z = z;
+						attach_option_data(mesh, name, !is_hanging, name, null); // state[name+".mtl"])
+						if (!is_hanging)
+							mesh.position.y += i * 4;
+						else
+							mesh.position.z += i * 4;
+
+						state["fixture1.obj"].add(mesh);
+					}
+				} else {
+					console.log("add_option", container_id);
+					console.log("------", name);
+					console.log("------", x);
+					console.log("------", y);
+					console.log("------", z);
+					console.log("------", is_hanging);
+					var object = state[name + ".obj"].children[0].clone();
+					object.visible = true;
+					attach_option_data(object, container_id, name, !is_hanging, name, null); // state[name+".mtl"])
+					object.position.x = 0;
+					object.position.y = 0;
+					object.position.z = 0;
+					object.rotateX(is_hanging ? Math.PI / 2 : 0);
+					object = calculate_mesh_position(object);
+
+					for (var i = 0; i < 7; i++) {
+						var mesh = object.clone();
+						mesh.visible.true;
+						attach_option_data(mesh, name, !is_hanging, name, null); // state[name+".mtl"])
+						if (!is_hanging) {
+							mesh.position.y += (i * 4) - y + mesh.geometry.boundingBox.max.y - mesh.geometry.boundingBox.min.y;
+
+						} else {
+							mesh.position.z += (i * 4) - z + mesh.geometry.boundingBox.max.y - mesh.geometry.boundingBox.min.y;
+						}
+						fixtures[0].children[container_id].add(mesh);
+					}
+				}
+
+			}
+			//
+			function animate() {
+
+				requestAnimationFrame(animate);
+				f.innerHTML = fps.getFPS();
+				// {#                console.log(fps.getFPS());#}
+				render();
+
+
+			}
+
+			function update() {
+				// find intersections
+
+				// create a Ray with origin at the mouse position
+				//   and direction into the scene (camera direction)
+				var vector = new THREE.Vector3(mouse.x, mouse.y, 1);
+				vector.unproject(camera);
+				var ray = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
+
+				// create an array containing all objects in the scene with which the ray intersects
+				var intersects = ray.intersectObjects(fixtures[0].children[0].children[0].children);
+
+				// INTERSECTED = the object in the scene currently closest to the camera
+				//		and intersected by the Ray projected from the mouse position
+
+				if (INTERSECTED) {
+					INTERSECTED.material.color.setHex(INTERSECTED.currentHex);
+					INTERSECTED.material.emissive.setHex(INTERSECTED.currentEmissiveHex);
+				}
+
+				// if there is one (or more) intersections
+				if (intersects.length > 0) {
+					// if the closest object intersected is not the currently stored intersection object
+					if (intersects[0].object != INTERSECTED && intersects[0].object.material.length == undefined) {
+						//console.log("inters")
+						// restore previous intersection object (if it exists) to its original color
+						if (INTERSECTED)
+							INTERSECTED.material.color.setHex(INTERSECTED.currentHex);
+						// store reference to closest object as current intersection object
+						INTERSECTED = intersects[0].object;
+						// store color of closest object (for later restoration)
+						INTERSECTED.currentHex = INTERSECTED.material.color.getHex();
+						INTERSECTED.currentEmissiveHex = INTERSECTED.material.emissive.getHex();
+
+						// set a new color for closest object
+
+						//DO NOT SELECT FIXTURE
+						if (INTERSECTED.material.map && INTERSECTED.material.name != "Material_skip" && INTERSECTED.material.map.image) {
+							INTERSECTED.material.color.setHex(0x00ff00);
+							INTERSECTED.material.emissive.setHex(0x00ff00);
+							//console.log(INTERSECTED.material, INTERSECTED.material.name);
+							raiseSelectionChanged();
+						}
+					} else {
+						//Same obj is clicked
+						INTERSECTED = null;
+						raiseSelectionChanged();
+					}
+				} else // there are no intersections
+				{
+					// restore previous intersection object (if it exists) to its original color
+
+					// remove previous intersection object reference
+					//     by setting current intersection object to "nothing"
+					INTERSECTED = null;
+					raiseSelectionChanged();
+				}
+
+
+
+
+				//controls.update();
+				//stats.update();
+			}
+
+			function update_container(x, y, option_name) {
+				var vector = new THREE.Vector3(x, y, 1);
+				// {#                var vector = new THREE.Vector3( mouse.x, mouse.y, 1 );#}
+				console.log(mouse.x, mouse.y);
+				vector.unproject(camera);
+				var ray = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
+				var intersects = ray.intersectObjects(fixtures[0].children);
+				console.log("update container intersects", intersects);
+				// if there is one (or more) intersections
+				if (intersects.length > 0) {
+					clear_container_if_full(intersects[0].object.id_container);
+					//calculate distance from center of the continer to top face, bottom face and back face
+					var bb = getBoundingBox(intersects[0].object);
+					var x_dist_to_top = (bb.max.x - bb.min.x) / 2;
+					var y_dist_to_bottom = (bb.max.y - bb.min.y) / 2;
+					var z_dist_to_back = (bb.max.z - bb.min.z) / 2;
+					add_option(state, intersects[0].object.id_container, option_name, x_dist_to_top, y_dist_to_bottom, z_dist_to_back, intersects[0].object.is_hanging, true);
+				}
+			}
+
+			function clear_container_if_full(container_id) {
+				if (fixtures[0].children[container_id].children.length != 0) {
+					//empty the continer if is full because another option has to be added
+					fixtures[0].children[container_id].children = [];
+				}
+			}
+
+			ReactNativeComms.addReactNativeEventListener(function(e) {
+				if (e.event !== "dropItem") {
+					return;
+				}
+				var x = (e.data.position.x / window.innerWidth) * 2 - 1;
+				var y = -(e.data.position.y / window.innerHeight) * 2 + 1;
+				update_container(x, y, e.data.id);
+			})
+
+			function render() {
+
+				if (rotate) {
+					rotateScene(-0.2, 0);
+				}
+				renderer.render(scene, camera);
+
+			}
+
+			function raiseSelectionChanged() {
+				var event = new CustomEvent("selectionChanged", {
+					"detail": {
+						"selected": INTERSECTED
+					}
+				});
+				document.dispatchEvent(event);
+			}
+
+			function hideProductInfo() {
+				var div = document.getElementById("product_info");
+				div.style.display = "none";
+				//console.log("hidden")
+			}
+			document.addEventListener("selectionChanged", function(e) {
+				console.info("Event is: ", e.detail.selected);
+
+				if (e.detail.selected && e.detail.selected.material.map.image) {
+					src = e.detail.selected.material.map.image.src
+
+					picture = src.substring(src.lastIndexOf("/") + 1)
+					//console.info(id+": "+picture);
+					product = products[id][picture]
+					//console.info(product);
+
+					if (mouseX) {
+						var div = document.getElementById("product_info");
+						div.style.display = "block";
+						div.style.top = (mouseY + 15) + "px";
+						div.style.left = (mouseX - 160) + "px";
+
+						var img = document.getElementById("product_info_image");
+						// {#                        img.src=prefix+ "images/"+picture.replace(".jpg",".PNG")#}
+						img.src = src;
+
+						document.getElementById("product_info_name").innerText = product.name;
+						document.getElementById("product_info_descrition").innerText = product.description;
+						document.getElementById("product_info_quantity").innerText = "Quantity: " + product.quantity;
+						ReactNativeComms.postToReactNative({
+							event: "selectItem",
+							id: product.description
+						});
+					}
+				} else {
+					hideProductInfo();
+				}
+			})
+
+
+
+
+			function zoom(howMuch) {
+				camera.position.z += howMuch;
+				if (camera.position.z > 480)
+					camera.position.z = 480;
+				if (camera.position.z < 30)
+					camera.position.z = 30;
+			}
+
+
+
+
+			function zoomIn() {
+				zoom(-30);
+			}
+
+
+			function zoomOut() {
+				zoom(30);
+			}
+
+
+			//RESIZE
+			function onWindowResize() {
+
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
+
+				camera.aspect = window.innerWidth / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+				renderer.setSize(window.innerWidth, window.innerHeight);
+
+			}
+
+
+
+
+
+
+
+			//MOUSE
+			function onMouseMove(evt) {
+
+				if (!mouseDown) {
+					//console.log('mosemove triggered ...');
+					return;
+				} else {
+					mouseMove = true;
+
+				}
+
+				evt.preventDefault();
+
+				var deltaX = evt.clientX - mouseX,
+					deltaY = evt.clientY - mouseY;
+				mouseX = evt.clientX;
+				mouseY = evt.clientY;
+
+
+
+				rotateScene(deltaX, deltaY);
+			}
+
+			function onMouseDown(evt) {
+				//console.log('mouse down triggered ...');
+				console.log("Mouse down event", evt)
+				evt.preventDefault();
+				if (rotate)
+					rotate = false;
+
+				mouseDown = true;
+
+				mouseX = evt.clientX;
+				mouseY = evt.clientY;
+
+				hideProductInfo();
+			}
+
+			function onMouseUp(evt) {
+				//console.log('mouse up triggered...');
+
+				evt.preventDefault();
+
+				mouseDown = false;
+
+				// update the mouse variable
+				mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+				mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+				if (fixtures && fixtures.length > 0 && !mouseMove) {
+
+					update();
+					// {#                    update_container(mouse.x, mouse.y);#}
+				}
+				mouseMove = false;
+
+			}
+
+			function onMouseOut(evt) {
+				evt.preventDefault();
+				mouseDown = false;
+				mouseMove = false;
+			}
+
+			function onMouseWheelHandler(e) {
+
+				// cross-browser wheel delta
+				var e = window.event || e; // old IE support
+				e.preventDefault();
+				var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+				//console.log("wheel"+ e.wheelDelta+" "+camera.position.z);
+				zoom(-2 * e.wheelDelta);
+
+			}
+
+
+			// Touch events
+			function touchstart(event) {
+				//		if ( scope.enabled === false ) { return; }
+				console.log("Touch Down");
+				console.log("touchstart: " + event.touches.length);
+				switch (event.touches.length) {
+
+					case 1: // one-fingered touch: rotate
+						//if ( scope.noRotate === true ) { return; }
+
+						//				state.touchstate = touchstate.TOUCH_ROTATE;
+
+						//				rotateStart.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+						if (rotate)
+							rotate = false;
+
+						mouseDown = true;
+						console.log("touchstart: " + event.touches[0].pageX, event.touches[0].pageY);
+
+						mouseX = event.touches[0].pageX;
+						mouseY = event.touches[0].pageY;
+
+
+						break;
+
+					case 2: // two-fingered touch: dolly
+						// {#				if ( scope.noZoom === true ) { return; }#}
+
+						state.touchstate = touchstate.TOUCH_DOLLY;
+
+						var dx = event.touches[0].pageX - event.touches[1].pageX;
+						var dy = event.touches[0].pageY - event.touches[1].pageY;
+						var distance = Math.sqrt(dx * dx + dy * dy);
+						dollyStart.set(0, distance);
+						break;
+
+					case 3: // three-fingered touch: pan
+						// {#				if ( scope.noPan === true ) { return; }#}
+
+						state.touchstate = touchstate.TOUCH_PAN;
+
+						panStart.set(event.touches[0].pageX, event.touches[0].pageY);
+						break;
+
+					default:
+						state.touchstate = touchstate.NONE;
+
+				}
+			}
+
+			function touchmove(event) {
+
+				//		if ( scope.enabled === false ) { return; }
+
+				event.preventDefault();
+				event.stopPropagation();
+
+				//		var element = scope.domElement === document ? scope.domElement.body : scope.domElement;
+				console.log("touchmove: " + event.touches.length);
+
+				switch (event.touches.length) {
+
+					case 1: // one-fingered touch: rotate
+						//				if ( scope.noRotate === true ) { return; }
+						//				if ( state.touchstate !== touchstate.TOUCH_ROTATE ) { return; }
+						//
+						//				rotateEnd.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+						//				rotateDelta.subVectors( rotateEnd, rotateStart );
+						//
+						//				// rotating across whole screen goes 360 degrees around
+						//				scope.rotateLeft( 2 * Math.PI * rotateDelta.x / element.clientWidth * scope.rotateSpeed );
+						//				// rotating up and down along whole screen attempts to go 360, but limited to 180
+						//				scope.rotateUp( 2 * Math.PI * rotateDelta.y / element.clientHeight * scope.rotateSpeed );
+						//
+						//				rotateStart.copy( rotateEnd );
+
+						if (!mouseDown) {
+							return;
+						} else {
+							mouseMove = true;
+
+						}
+
+
+
+						var deltaX = event.touches[0].pageX - mouseX,
+							deltaY = event.touches[0].pageY - mouseY;
+						mouseX = event.touches[0].pageX;
+						mouseY = event.touches[0].pageY;
+
+
+
+						rotateScene(deltaX, deltaY);
+
+
+						break;
+
+					case 2: // two-fingered touch: dolly
+						if (scope.noZoom === true) {
+							return;
+						}
+						if (state.touchstate !== touchstate.TOUCH_DOLLY) {
+							return;
+						}
+
+						var dx = event.touches[0].pageX - event.touches[1].pageX;
+						var dy = event.touches[0].pageY - event.touches[1].pageY;
+						var distance = Math.sqrt(dx * dx + dy * dy);
+
+						dollyEnd.set(0, distance);
+						dollyDelta.subVectors(dollyEnd, dollyStart);
+
+						if (dollyDelta.y > 0) {
+
+							scope.dollyOut();
+
+						} else {
+
+							scope.dollyIn();
+
+						}
+
+						dollyStart.copy(dollyEnd);
+						break;
+
+					case 3: // three-fingered touch: pan
+						if (scope.noPan === true) {
+							return;
+						}
+						if (state.touchstate !== touchstate.TOUCH_PAN) {
+							return;
+						}
+
+						panEnd.set(event.touches[0].pageX, event.touches[0].pageY);
+						panDelta.subVectors(panEnd, panStart);
+
+						scope.pan(panDelta);
+
+						panStart.copy(panEnd);
+						break;
+
+					default:
+						state.touchstate = touchstate.NONE;
+
+				}
+
+			}
+
+			function touchend(evt) {
+
+				//		if ( scope.enabled === false ) { return; }
+
+				//		touchstate = touchstate.NONE;
+
+
+				evt.preventDefault();
+
+				mouseDown = false;
+
+				// update the mouse variable
+				mouse.x = (evt.changedTouches[0].clientX / window.innerWidth) * 2 - 1;
+				mouse.y = -(evt.changedTouches[0].clientY / window.innerHeight) * 2 + 1;
+				if (!mouseMove) {
+
+					update();
+					// {#            update_container(mouse.x, mouse.y);#}
+				}
+				mouseMove = false;
+
+			}
+
+			function addMouseHandler(canvas) {
+				canvas.addEventListener('mousemove', function(e) {
+					onMouseMove(e);
+				}, false);
+				canvas.addEventListener('mousedown', function(e) {
+					onMouseDown(e);
+				}, false);
+				canvas.addEventListener('mouseout', function(e) {
+					onMouseOut(e);
+				}, false);
+				canvas.addEventListener('mouseup', function(e) {
+					onMouseUp(e);
+				}, false);
+
+				canvas.addEventListener('touchstart', function(e) {
+					touchstart(e);
+				}, false);
+				canvas.addEventListener('touchend', function(e) {
+					touchend(e);
+				}, false);
+				canvas.addEventListener('touchmove', function(e) {
+					touchmove(e);
+				}, false);
+
+				if (canvas.addEventListener) {
+					// IE9, Chrome, Safari, Opera
+					canvas.addEventListener("mousewheel", onMouseWheelHandler, false);
+					// Firefox
+					canvas.addEventListener("DOMMouseScroll", onMouseWheelHandler, false);
+				}
+				// IE 6/7/8
+				else canvas.attachEvent("onmousewheel", onMouseWheelHandler);
+			}
+
+			function rotateScene(deltaX, deltaY) {
+				if (fixtures && fixtures.length > 0) {
+					root = fixtures[0];
+					root.rotation.y += deltaX / 100;
+					root.rotation.x += deltaY / 100;
+				}
+			}
+		});
+	</script>
+
+	<div id="div_zoom" style="position: absolute;bottom: 0px;right: 7px;">
+		<img src="static/images/Basic-Minus-icon.png" onmousedown="zoomOut();" width="24" height="24" />
+		<img src="static/images/Basic-Plus-icon.png" onmousedown="zoomIn();" width="24" height="24" />
+	</div>
+
+	<div id="product_info" style="position:absolute;width:325px;min-height:110px;background-color:white;color:black;box-shadow: 1px 1px 5px #888;display:none;">
+
+		<div id="product_info_image_box" style="position: absolute;text-align: center;vertical-align: middle; top: 14px;left: 14px;width: 74px;heigth: 95px;border: 1px solid #ddd;background: #fff;">
+			<img id="product_info_image" height="74" src="" />
+		</div>
+		<div id="product_info_details_box" style="position: absolute;top: 14px;left: 102px;width:209px;background: #fff;">
+			<div id="product_info_name" style="color:#a9a9a9;display: block;font-size: 13px; height: 14px;line-height: 16px;overflow: hidden; padding-bottom: 3px; text-overflow: ellipsis; white-space: nowrap; width: 100%;"></div>
+			<div id="product_info_descrition" style="display: block;font-size: 13px;height: 14px;overflow: hidden;padding-bottom: 3px;text-overflow: ellipsis;white-space: nowrap;"></div>
+			<div id="product_info_quantity" style="font-size:12px;"></div>
+		</div>
+
+	</div>
+</body>
+
+</html>

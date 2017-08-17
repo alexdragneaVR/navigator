@@ -1,5 +1,6 @@
 (ns vr.pixa.local-storage
   (:require [cljs.core.async :refer [put! promise-chan] :as async]
+            [cljs.reader :as reader]
             [vr.pi :refer [error]])
   (:require-macros [cljs.core.async.macros :refer [go go-loop]]
                    [vr.macros :refer [gosafe]]))
@@ -84,7 +85,7 @@
   (let [result (promise-chan)]
     (-> AsyncStorage
       (.getItem (pr-str key))
-      (.then #(put! result [true (cljs.reader/read-string %)]))
+      (.then #(put! result [true (reader/read-string %)]))
       (.catch #(put! result [false %])))
     result))
 

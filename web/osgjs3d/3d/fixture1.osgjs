@@ -1,0 +1,3306 @@
+{
+  "Generator": "OpenSceneGraph 3.5.6",
+  "Version": 9,
+  "osg.Node": {
+    "Children": [ {
+      "osg.Node": {
+        "UniqueID": 0,
+        "Name": "fixture1.obj",
+        "Children": [ {
+          "osg.Node": {
+            "UniqueID": 1,
+            "Children": [ {
+              "osg.Geometry": {
+                "UniqueID": 2,
+                "PrimitiveSetList": [ {
+                  "DrawElementsUShort": {
+                    "UniqueID": 9,
+                    "Indices": {
+                      "UniqueID": 10,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 1, 2, 0, 3 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 11,
+                    "Indices": {
+                      "UniqueID": 12,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 7, 4, 6, 5 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 13,
+                    "Indices": {
+                      "UniqueID": 14,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 31, 28, 30, 29 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 15,
+                    "Indices": {
+                      "UniqueID": 16,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 95, 92, 94, 93 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 17,
+                    "Indices": {
+                      "UniqueID": 18,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 91, 88, 90, 89 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 19,
+                    "Indices": {
+                      "UniqueID": 20,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 87, 84, 86, 85 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 21,
+                    "Indices": {
+                      "UniqueID": 22,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 83, 80, 82, 81 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 23,
+                    "Indices": {
+                      "UniqueID": 24,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 79, 76, 78, 77 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 25,
+                    "Indices": {
+                      "UniqueID": 26,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 75, 72, 74, 73 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 27,
+                    "Indices": {
+                      "UniqueID": 28,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 71, 68, 70, 69 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 29,
+                    "Indices": {
+                      "UniqueID": 30,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 67, 64, 66, 65 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 31,
+                    "Indices": {
+                      "UniqueID": 32,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 61, 62, 60, 63 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 33,
+                    "Indices": {
+                      "UniqueID": 34,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 57, 58, 56, 59 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 35,
+                    "Indices": {
+                      "UniqueID": 36,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 53, 54, 52, 55 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 37,
+                    "Indices": {
+                      "UniqueID": 38,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 49, 50, 48, 51 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 39,
+                    "Indices": {
+                      "UniqueID": 40,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 45, 46, 44, 47 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 41,
+                    "Indices": {
+                      "UniqueID": 42,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 41, 42, 40, 43 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 43,
+                    "Indices": {
+                      "UniqueID": 44,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 37, 38, 36, 39 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 45,
+                    "Indices": {
+                      "UniqueID": 46,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 33, 34, 32, 35 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 47,
+                    "Indices": {
+                      "UniqueID": 48,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 27, 24, 26, 25 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 49,
+                    "Indices": {
+                      "UniqueID": 50,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 23, 20, 22, 21 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 51,
+                    "Indices": {
+                      "UniqueID": 52,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 19, 16, 18, 17 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 53,
+                    "Indices": {
+                      "UniqueID": 54,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 15, 12, 14, 13 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 55,
+                    "Indices": {
+                      "UniqueID": 56,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 9, 10, 8, 11 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                } ],
+                "StateSet": {
+                  "osg.StateSet": {
+                    "UniqueID": 3,
+                    "AttributeList": [ {
+                      "osg.Material": {
+                        "UniqueID": 4,
+                        "Name": "Material_1",
+                        "Ambient": [ 0.7098, 0.6471, 0.5176, 0.57],
+                        "Diffuse": [ 0.7098, 0.6471, 0.5176, 0.57],
+                        "Emission": [ 0, 0, 0, 0.57],
+                        "Shininess": 103.296,
+                        "Specular": [ 0.9412, 0.9255, 0.8902, 0.57]
+                      }
+                    },
+                    {
+                      "osg.BlendFunc": {
+                        "UniqueID": 5,
+                        "DestinationAlpha": "ONE_MINUS_SRC_ALPHA",
+                        "DestinationRGB": "ONE_MINUS_SRC_ALPHA",
+                        "SourceAlpha": "SRC_ALPHA",
+                        "SourceRGB": "SRC_ALPHA"
+                      }
+                    } ],
+                    "RenderingHint": "TRANSPARENT_BIN"
+                  }
+                },
+                "VertexAttributeList": {
+                  "Normal": {
+                    "UniqueID": 7,
+                    "Array": { 
+                      "Float32Array": { 
+                        "Elements": [ 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1 ],
+                        "Size": 96
+                      }
+                    },
+                    "ItemSize": 3,
+                    "Type": "ARRAY_BUFFER"
+                  },
+                  "TexCoord0": {
+                    "UniqueID": 8,
+                    "Array": { 
+                      "Float32Array": { 
+                        "Elements": [ 0, 0, 0.6667, 0, 0.6667, 0.0417, 0, 0.0417, 0.6667, 0, 0.8333, 0, 0.8333, 0.0417, 0.6667, 0.0417, 0.8333, 0, 1.5, 0, 1.5, 0.0417, 0.8333, 0.0417, 1.5, 0, 1.6667, 0, 1.6667, 0.0417, 1.5, 0.0417, 0, -0.4167, 0.6667, -0.4167, 0.6667, 0, 0, 0, 0, 0, -0.6667, 0, -0.6667, -0.4167, 0, -0.4167, 0, 0, 0.6667, 0, 0.6667, 0.0417, 0, 0.0417, 0.6667, 0, 0.8333, 0, 0.8333, 0.0417, 0.6667, 0.0417, 0.8333, 0, 1.5, 0, 1.5, 0.0417, 0.8333, 0.0417, 1.5, 0, 1.6667, 0, 1.6667, 0.0417, 1.5, 0.0417, 0, -0.4167, 0.6667, -0.4167, 0.6667, 0, 0, 0, 0, 0, -0.6667, 0, -0.6667, -0.4167, 0, -0.4167, 0, 0, 0.18, 0, 0.18, 0.0167, 0, 0.0167, 0.18, 0, 0.3467, 0, 0.3467, 0.0167, 0.18, 0.0167, 0.3467, 0, 0.5267, 0, 0.5267, 0.0167, 0.3467, 0.0167, 0.5267, 0, 0.6933, 0, 0.6933, 0.0167, 0.5267, 0.0167, 0, -0.4167, 0.18, -0.4167, 0.18, 0, 0, 0, 0, 0, -0.18, 0, -0.18, -0.4167, 0, -0.4167, 0, 0, 0.18, 0, 0.18, 0.0167, 0, 0.0167, 0.18, 0, 0.3467, 0, 0.3467, 0.0167, 0.18, 0.0167, 0.3467, 0, 0.5267, 0, 0.5267, 0.0167, 0.3467, 0.0167, 0.5267, 0, 0.6933, 0, 0.6933, 0.0167, 0.5267, 0.0167, 0, -0.4167, 0.18, -0.4167, 0.18, 0, 0, 0, 0, 0, -0.18, 0, -0.18, -0.4167, 0, -0.4167 ],
+                        "Size": 96
+                      }
+                    },
+                    "ItemSize": 2,
+                    "Type": "ARRAY_BUFFER"
+                  },
+                  "Vertex": {
+                    "UniqueID": 6,
+                    "Array": { 
+                      "Float32Array": { 
+                        "Elements": [ 43, 31, 160, -157, 31, 160, -157, 31, 165, 43, 31, 165, -157, 31, 160, -157, -19, 160, -157, -19, 165, -157, 31, 165, -157, -19, 160, 43, -19, 160, 43, -19, 165, -157, -19, 165, 43, -19, 160, 43, 31, 160, 43, 31, 165, 43, -19, 165, 43, -19, 160, -157, -19, 160, -157, 31, 160, 43, 31, 160, 43, 31, 165, -157, 31, 165, -157, -19, 165, 43, -19, 165, 43, 31, 5, -157, 31, 5, -157, 31, 10, 43, 31, 10, -157, 31, 5, -157, -19, 5, -157, -19, 10, -157, 31, 10, -157, -19, 5, 43, -19, 5, 43, -19, 10, -157, -19, 10, 43, -19, 5, 43, 31, 5, 43, 31, 10, 43, -19, 10, 43, -19, 5, -157, -19, 5, -157, 31, 5, 43, 31, 5, 43, 31, 10, -157, 31, 10, -157, -19, 10, 43, -19, 10, 43.18, 31, 61, -10.82, 31, 61, -10.82, 31, 63, 43.18, 31, 63, -10.82, 31, 61, -10.82, -19, 61, -10.82, -19, 63, -10.82, 31, 63, -10.82, -19, 61, 43.18, -19, 61, 43.18, -19, 63, -10.82, -19, 63, 43.18, -19, 61, 43.18, 31, 61, 43.18, 31, 63, 43.18, -19, 63, 43.18, -19, 61, -10.82, -19, 61, -10.82, 31, 61, 43.18, 31, 61, 43.18, 31, 63, -10.82, 31, 63, -10.82, -19, 63, 43.18, -19, 63, 43.18, 31, 111, -10.82, 31, 111, -10.82, 31, 113, 43.18, 31, 113, -10.82, 31, 111, -10.82, -19, 111, -10.82, -19, 113, -10.82, 31, 113, -10.82, -19, 111, 43.18, -19, 111, 43.18, -19, 113, -10.82, -19, 113, 43.18, -19, 111, 43.18, 31, 111, 43.18, 31, 113, 43.18, -19, 113, 43.18, -19, 111, -10.82, -19, 111, -10.82, 31, 111, 43.18, 31, 111, 43.18, 31, 113, -10.82, 31, 113, -10.82, -19, 113, 43.18, -19, 113 ],
+                        "Size": 96
+                      }
+                    },
+                    "ItemSize": 3,
+                    "Type": "ARRAY_BUFFER"
+                  }
+                }
+              }
+            } ]
+          }
+        },
+        {
+          "osg.Node": {
+            "UniqueID": 57,
+            "Children": [ {
+              "osg.Geometry": {
+                "UniqueID": 58,
+                "PrimitiveSetList": [ {
+                  "DrawElementsUShort": {
+                    "UniqueID": 64,
+                    "Indices": {
+                      "UniqueID": 65,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 1, 2, 0, 3 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 66,
+                    "Indices": {
+                      "UniqueID": 67,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 7, 4, 6, 5 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 68,
+                    "Indices": {
+                      "UniqueID": 69,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 31, 28, 30, 29 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 70,
+                    "Indices": {
+                      "UniqueID": 71,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 255, 252, 254, 253 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 72,
+                    "Indices": {
+                      "UniqueID": 73,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 465, 466, 464, 467 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 74,
+                    "Indices": {
+                      "UniqueID": 75,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 599, 596, 598, 597 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 76,
+                    "Indices": {
+                      "UniqueID": 77,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 595, 592, 594, 593 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 78,
+                    "Indices": {
+                      "UniqueID": 79,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 589, 590, 588, 591 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 80,
+                    "Indices": {
+                      "UniqueID": 81,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 587, 584, 586, 585 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 82,
+                    "Indices": {
+                      "UniqueID": 83,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 581, 582, 580, 583 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 84,
+                    "Indices": {
+                      "UniqueID": 85,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 579, 576, 578, 577 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 86,
+                    "Indices": {
+                      "UniqueID": 87,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 257, 258, 256, 259 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 88,
+                    "Indices": {
+                      "UniqueID": 89,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 571, 568, 570, 569 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 90,
+                    "Indices": {
+                      "UniqueID": 91,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 567, 564, 566, 565 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 92,
+                    "Indices": {
+                      "UniqueID": 93,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 563, 560, 562, 561 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 94,
+                    "Indices": {
+                      "UniqueID": 95,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 469, 470, 468, 471 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 96,
+                    "Indices": {
+                      "UniqueID": 97,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 557, 558, 556, 559 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 98,
+                    "Indices": {
+                      "UniqueID": 99,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 555, 552, 554, 553 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 100,
+                    "Indices": {
+                      "UniqueID": 101,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 547, 544, 546, 545 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 102,
+                    "Indices": {
+                      "UniqueID": 103,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 541, 542, 540, 543 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 104,
+                    "Indices": {
+                      "UniqueID": 105,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 539, 536, 538, 537 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 106,
+                    "Indices": {
+                      "UniqueID": 107,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 533, 534, 532, 535 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 108,
+                    "Indices": {
+                      "UniqueID": 109,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 529, 530, 528, 531 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 110,
+                    "Indices": {
+                      "UniqueID": 111,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 525, 526, 524, 527 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 112,
+                    "Indices": {
+                      "UniqueID": 113,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 521, 522, 520, 523 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 114,
+                    "Indices": {
+                      "UniqueID": 115,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 519, 516, 518, 517 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 116,
+                    "Indices": {
+                      "UniqueID": 117,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 515, 512, 514, 513 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 118,
+                    "Indices": {
+                      "UniqueID": 119,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 549, 550, 548, 551 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 120,
+                    "Indices": {
+                      "UniqueID": 121,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 509, 510, 508, 511 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 122,
+                    "Indices": {
+                      "UniqueID": 123,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 505, 506, 504, 507 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 124,
+                    "Indices": {
+                      "UniqueID": 125,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 501, 502, 500, 503 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 126,
+                    "Indices": {
+                      "UniqueID": 127,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 499, 496, 498, 497 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 128,
+                    "Indices": {
+                      "UniqueID": 129,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 493, 494, 492, 495 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 130,
+                    "Indices": {
+                      "UniqueID": 131,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 489, 490, 488, 491 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 132,
+                    "Indices": {
+                      "UniqueID": 133,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 487, 484, 486, 485 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 134,
+                    "Indices": {
+                      "UniqueID": 135,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 483, 480, 482, 481 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 136,
+                    "Indices": {
+                      "UniqueID": 137,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 475, 472, 474, 473 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 138,
+                    "Indices": {
+                      "UniqueID": 139,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 261, 262, 260, 263 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 140,
+                    "Indices": {
+                      "UniqueID": 141,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 461, 462, 460, 463 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 142,
+                    "Indices": {
+                      "UniqueID": 143,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 457, 458, 456, 459 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 144,
+                    "Indices": {
+                      "UniqueID": 145,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 453, 454, 452, 455 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 146,
+                    "Indices": {
+                      "UniqueID": 147,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 449, 450, 448, 451 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 148,
+                    "Indices": {
+                      "UniqueID": 149,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 267, 264, 266, 265 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 150,
+                    "Indices": {
+                      "UniqueID": 151,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 445, 446, 444, 447 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 152,
+                    "Indices": {
+                      "UniqueID": 153,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 439, 436, 438, 437 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 154,
+                    "Indices": {
+                      "UniqueID": 155,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 435, 432, 434, 433 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 156,
+                    "Indices": {
+                      "UniqueID": 157,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 269, 270, 268, 271 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 158,
+                    "Indices": {
+                      "UniqueID": 159,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 429, 430, 428, 431 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 160,
+                    "Indices": {
+                      "UniqueID": 161,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 425, 426, 424, 427 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 162,
+                    "Indices": {
+                      "UniqueID": 163,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 419, 416, 418, 417 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 164,
+                    "Indices": {
+                      "UniqueID": 165,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 413, 414, 412, 415 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 166,
+                    "Indices": {
+                      "UniqueID": 167,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 409, 410, 408, 411 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 168,
+                    "Indices": {
+                      "UniqueID": 169,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 405, 406, 404, 407 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 170,
+                    "Indices": {
+                      "UniqueID": 171,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 401, 402, 400, 403 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 172,
+                    "Indices": {
+                      "UniqueID": 173,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 395, 392, 394, 393 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 174,
+                    "Indices": {
+                      "UniqueID": 175,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 391, 388, 390, 389 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 176,
+                    "Indices": {
+                      "UniqueID": 177,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 387, 384, 386, 385 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 178,
+                    "Indices": {
+                      "UniqueID": 179,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 381, 382, 380, 383 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 180,
+                    "Indices": {
+                      "UniqueID": 181,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 377, 378, 376, 379 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 182,
+                    "Indices": {
+                      "UniqueID": 183,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 373, 374, 372, 375 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 184,
+                    "Indices": {
+                      "UniqueID": 185,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 369, 370, 368, 371 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 186,
+                    "Indices": {
+                      "UniqueID": 187,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 479, 476, 478, 477 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 188,
+                    "Indices": {
+                      "UniqueID": 189,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 131, 128, 130, 129 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 190,
+                    "Indices": {
+                      "UniqueID": 191,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 135, 132, 134, 133 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 192,
+                    "Indices": {
+                      "UniqueID": 193,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 359, 356, 358, 357 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 194,
+                    "Indices": {
+                      "UniqueID": 195,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 355, 352, 354, 353 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 196,
+                    "Indices": {
+                      "UniqueID": 197,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 273, 274, 272, 275 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 198,
+                    "Indices": {
+                      "UniqueID": 199,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 349, 350, 348, 351 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 200,
+                    "Indices": {
+                      "UniqueID": 201,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 345, 346, 344, 347 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 202,
+                    "Indices": {
+                      "UniqueID": 203,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 341, 342, 340, 343 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 204,
+                    "Indices": {
+                      "UniqueID": 205,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 137, 138, 136, 139 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 206,
+                    "Indices": {
+                      "UniqueID": 207,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 277, 278, 276, 279 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 208,
+                    "Indices": {
+                      "UniqueID": 209,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 33, 34, 32, 35 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 210,
+                    "Indices": {
+                      "UniqueID": 211,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 281, 282, 280, 283 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 212,
+                    "Indices": {
+                      "UniqueID": 213,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 141, 142, 140, 143 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 214,
+                    "Indices": {
+                      "UniqueID": 215,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 285, 286, 284, 287 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 216,
+                    "Indices": {
+                      "UniqueID": 217,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 361, 362, 360, 363 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 218,
+                    "Indices": {
+                      "UniqueID": 219,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 289, 290, 288, 291 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 220,
+                    "Indices": {
+                      "UniqueID": 221,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 145, 146, 144, 147 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 222,
+                    "Indices": {
+                      "UniqueID": 223,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 293, 294, 292, 295 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 224,
+                    "Indices": {
+                      "UniqueID": 225,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 365, 366, 364, 367 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 226,
+                    "Indices": {
+                      "UniqueID": 227,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 149, 150, 148, 151 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 228,
+                    "Indices": {
+                      "UniqueID": 229,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 299, 296, 298, 297 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 230,
+                    "Indices": {
+                      "UniqueID": 231,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 333, 334, 332, 335 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 232,
+                    "Indices": {
+                      "UniqueID": 233,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 329, 330, 328, 331 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 234,
+                    "Indices": {
+                      "UniqueID": 235,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 323, 320, 322, 321 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 236,
+                    "Indices": {
+                      "UniqueID": 237,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 319, 316, 318, 317 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 238,
+                    "Indices": {
+                      "UniqueID": 239,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 315, 312, 314, 313 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 240,
+                    "Indices": {
+                      "UniqueID": 241,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 575, 572, 574, 573 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 242,
+                    "Indices": {
+                      "UniqueID": 243,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 307, 304, 306, 305 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 244,
+                    "Indices": {
+                      "UniqueID": 245,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 303, 300, 302, 301 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 246,
+                    "Indices": {
+                      "UniqueID": 247,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 37, 38, 36, 39 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 248,
+                    "Indices": {
+                      "UniqueID": 249,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 153, 154, 152, 155 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 250,
+                    "Indices": {
+                      "UniqueID": 251,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 311, 308, 310, 309 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 252,
+                    "Indices": {
+                      "UniqueID": 253,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 157, 158, 156, 159 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 254,
+                    "Indices": {
+                      "UniqueID": 255,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 325, 326, 324, 327 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 256,
+                    "Indices": {
+                      "UniqueID": 257,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 19, 16, 18, 17 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 258,
+                    "Indices": {
+                      "UniqueID": 259,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 163, 160, 162, 161 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 260,
+                    "Indices": {
+                      "UniqueID": 261,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 9, 10, 8, 11 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 262,
+                    "Indices": {
+                      "UniqueID": 263,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 167, 164, 166, 165 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 264,
+                    "Indices": {
+                      "UniqueID": 265,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 171, 168, 170, 169 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 266,
+                    "Indices": {
+                      "UniqueID": 267,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 125, 126, 124, 127 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 268,
+                    "Indices": {
+                      "UniqueID": 269,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 249, 250, 248, 251 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 270,
+                    "Indices": {
+                      "UniqueID": 271,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 245, 246, 244, 247 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 272,
+                    "Indices": {
+                      "UniqueID": 273,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 241, 242, 240, 243 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 274,
+                    "Indices": {
+                      "UniqueID": 275,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 237, 238, 236, 239 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 276,
+                    "Indices": {
+                      "UniqueID": 277,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 233, 234, 232, 235 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 278,
+                    "Indices": {
+                      "UniqueID": 279,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 229, 230, 228, 231 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 280,
+                    "Indices": {
+                      "UniqueID": 281,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 225, 226, 224, 227 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 282,
+                    "Indices": {
+                      "UniqueID": 283,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 221, 222, 220, 223 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 284,
+                    "Indices": {
+                      "UniqueID": 285,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 217, 218, 216, 219 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 286,
+                    "Indices": {
+                      "UniqueID": 287,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 213, 214, 212, 215 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 288,
+                    "Indices": {
+                      "UniqueID": 289,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 209, 210, 208, 211 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 290,
+                    "Indices": {
+                      "UniqueID": 291,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 205, 206, 204, 207 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 292,
+                    "Indices": {
+                      "UniqueID": 293,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 201, 202, 200, 203 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 294,
+                    "Indices": {
+                      "UniqueID": 295,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 197, 198, 196, 199 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 296,
+                    "Indices": {
+                      "UniqueID": 297,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 193, 194, 192, 195 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 298,
+                    "Indices": {
+                      "UniqueID": 299,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 189, 190, 188, 191 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 300,
+                    "Indices": {
+                      "UniqueID": 301,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 21, 22, 20, 23 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 302,
+                    "Indices": {
+                      "UniqueID": 303,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 175, 172, 174, 173 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 304,
+                    "Indices": {
+                      "UniqueID": 305,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 181, 182, 180, 183 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 306,
+                    "Indices": {
+                      "UniqueID": 307,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 179, 176, 178, 177 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 308,
+                    "Indices": {
+                      "UniqueID": 309,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 187, 184, 186, 185 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 310,
+                    "Indices": {
+                      "UniqueID": 311,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 45, 46, 44, 47 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 312,
+                    "Indices": {
+                      "UniqueID": 313,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 337, 338, 336, 339 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 314,
+                    "Indices": {
+                      "UniqueID": 315,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 397, 398, 396, 399 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 316,
+                    "Indices": {
+                      "UniqueID": 317,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 97, 98, 96, 99 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 318,
+                    "Indices": {
+                      "UniqueID": 319,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 101, 102, 100, 103 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 320,
+                    "Indices": {
+                      "UniqueID": 321,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 441, 442, 440, 443 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 322,
+                    "Indices": {
+                      "UniqueID": 323,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 105, 106, 104, 107 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 324,
+                    "Indices": {
+                      "UniqueID": 325,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 109, 110, 108, 111 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 326,
+                    "Indices": {
+                      "UniqueID": 327,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 25, 26, 24, 27 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 328,
+                    "Indices": {
+                      "UniqueID": 329,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 41, 42, 40, 43 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 330,
+                    "Indices": {
+                      "UniqueID": 331,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 113, 114, 112, 115 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 332,
+                    "Indices": {
+                      "UniqueID": 333,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 13, 14, 12, 15 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 334,
+                    "Indices": {
+                      "UniqueID": 335,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 121, 122, 120, 123 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 336,
+                    "Indices": {
+                      "UniqueID": 337,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 119, 116, 118, 117 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 338,
+                    "Indices": {
+                      "UniqueID": 339,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 421, 422, 420, 423 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 340,
+                    "Indices": {
+                      "UniqueID": 341,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 63, 60, 62, 61 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 342,
+                    "Indices": {
+                      "UniqueID": 343,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 63, 60, 62, 61 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 344,
+                    "Indices": {
+                      "UniqueID": 345,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 69, 70, 68, 71 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 346,
+                    "Indices": {
+                      "UniqueID": 347,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 69, 70, 68, 71 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 348,
+                    "Indices": {
+                      "UniqueID": 349,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 93, 94, 92, 95 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 350,
+                    "Indices": {
+                      "UniqueID": 351,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 93, 94, 92, 95 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 352,
+                    "Indices": {
+                      "UniqueID": 353,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 89, 90, 88, 91 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 354,
+                    "Indices": {
+                      "UniqueID": 355,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 89, 90, 88, 91 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 356,
+                    "Indices": {
+                      "UniqueID": 357,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 57, 58, 56, 59 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 358,
+                    "Indices": {
+                      "UniqueID": 359,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 57, 58, 56, 59 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 360,
+                    "Indices": {
+                      "UniqueID": 361,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 53, 54, 52, 55 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 362,
+                    "Indices": {
+                      "UniqueID": 363,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 53, 54, 52, 55 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 364,
+                    "Indices": {
+                      "UniqueID": 365,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 79, 76, 78, 77 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 366,
+                    "Indices": {
+                      "UniqueID": 367,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 79, 76, 78, 77 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 368,
+                    "Indices": {
+                      "UniqueID": 369,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 75, 72, 74, 73 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 370,
+                    "Indices": {
+                      "UniqueID": 371,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 75, 72, 74, 73 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 372,
+                    "Indices": {
+                      "UniqueID": 373,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 81, 82, 80, 83 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 374,
+                    "Indices": {
+                      "UniqueID": 375,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 81, 82, 80, 83 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 376,
+                    "Indices": {
+                      "UniqueID": 377,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 51, 48, 50, 49 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 378,
+                    "Indices": {
+                      "UniqueID": 379,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 51, 48, 50, 49 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 380,
+                    "Indices": {
+                      "UniqueID": 381,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 67, 64, 66, 65 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 382,
+                    "Indices": {
+                      "UniqueID": 383,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 67, 64, 66, 65 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 384,
+                    "Indices": {
+                      "UniqueID": 385,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 85, 86, 84, 87 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                },
+                {
+                  "DrawElementsUShort": {
+                    "UniqueID": 386,
+                    "Indices": {
+                      "UniqueID": 387,
+                      "Array": { 
+                        "Uint16Array": { 
+                          "Elements": [ 85, 86, 84, 87 ],
+                          "Size": 4
+                        }
+                      },
+                      "ItemSize": 1,
+                      "Type": "ELEMENT_ARRAY_BUFFER"
+                    },
+                    "Mode": "TRIANGLE_STRIP"
+                  }
+                } ],
+                "StateSet": {
+                  "osg.StateSet": {
+                    "UniqueID": 59,
+                    "AttributeList": [ {
+                      "osg.Material": {
+                        "UniqueID": 60,
+                        "Name": "Material_2",
+                        "Ambient": [ 0.3373, 0.3059, 0.2784, 1],
+                        "Diffuse": [ 0.3373, 0.3059, 0.2784, 1],
+                        "Emission": [ 0, 0, 0, 1],
+                        "Shininess": 78.976,
+                        "Specular": [ 0.7451, 0.7176, 0.6941, 1]
+                      }
+                    } ]
+                  }
+                },
+                "VertexAttributeList": {
+                  "Normal": {
+                    "UniqueID": 62,
+                    "Array": { 
+                      "Float32Array": { 
+                        "Elements": [ 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1 ],
+                        "Size": 600
+                      }
+                    },
+                    "ItemSize": 3,
+                    "Type": "ARRAY_BUFFER"
+                  },
+                  "TexCoord0": {
+                    "UniqueID": 63,
+                    "Array": { 
+                      "Float32Array": { 
+                        "Elements": [ 0, 0, 20, 0, 20, 20, 0, 20, 20, 0, 520, 0, 520, 20, 20, 20, 520, 0, 540, 0, 540, 20, 520, 20, 540, 0, 1040, 0, 1040, 20, 540, 20, 0, -500, 20, -500, 20, 0, 0, 0, 0, 0, -20, 0, -20, -500, 0, -500, 0, 0, 20, 0, 20, 20, 0, 20, 20, 0, 520, 0, 520, 20, 20, 20, 520, 0, 540, 0, 540, 20, 520, 20, 540, 0, 1040, 0, 1040, 20, 540, 20, 0, -500, 20, -500, 20, 0, 0, 0, 0, 0, -20, 0, -20, -500, 0, -500, 0, 0, 20, 0, 20, 1650, 0, 1650, 20, 0, 40, 0, 40, 1650, 20, 1650, 40, 0, 60, 0, 60, 1650, 40, 1650, 60, 0, 80, 0, 80, 1650, 60, 1650, 0, -20, 20, -20, 20, 0, 0, 0, 0, 0, -20, 0, -20, -20, 0, -20, 0, 0, 20, 0, 20, 1650, 0, 1650, 20, 0, 40, 0, 40, 1650, 20, 1650, 40, 0, 60, 0, 60, 1650, 40, 1650, 60, 0, 80, 0, 80, 1650, 60, 1650, 0, -20, 20, -20, 20, 0, 0, 0, 0, 0, -20, 0, -20, -20, 0, -20, 0, 0, 1000, 0, 1000, 20, 0, 20, 1000, 0, 1020, 0, 1020, 20, 1000, 20, 1020, 0, 2020, 0, 2020, 20, 1020, 20, 2020, 0, 2040, 0, 2040, 20, 2020, 20, 0, -20, 1000, -20, 1000, 0, 0, 0, 0, 0, -1000, 0, -1000, -20, 0, -20, 0, 0, 20, 0, 20, 20, 0, 20, 20, 0, 520, 0, 520, 20, 20, 20, 520, 0, 540, 0, 540, 20, 520, 20, 540, 0, 1040, 0, 1040, 20, 540, 20, 0, -500, 20, -500, 20, 0, 0, 0, 0, 0, -20, 0, -20, -500, 0, -500, 0, 0, 20, 0, 20, 20, 0, 20, 20, 0, 520, 0, 520, 20, 20, 20, 520, 0, 540, 0, 540, 20, 520, 20, 540, 0, 1040, 0, 1040, 20, 540, 20, 0, -500, 20, -500, 20, 0, 0, 0, 0, 0, -20, 0, -20, -500, 0, -500, 0, 0, 20, 0, 20, 20, 0, 20, 20, 0, 520, 0, 520, 20, 20, 20, 520, 0, 540, 0, 540, 20, 520, 20, 540, 0, 1040, 0, 1040, 20, 540, 20, 0, -500, 20, -500, 20, 0, 0, 0, 0, 0, -20, 0, -20, -500, 0, -500, 0, 0, 20, 0, 20, 20, 0, 20, 20, 0, 520, 0, 520, 20, 20, 20, 520, 0, 540, 0, 540, 20, 520, 20, 540, 0, 1040, 0, 1040, 20, 540, 20, 0, -500, 20, -500, 20, 0, 0, 0, 0, 0, -20, 0, -20, -500, 0, -500, 0, 0, 20, 0, 20, 1470, 0, 1470, 20, 0, 40, 0, 40, 1470, 20, 1470, 40, 0, 60, 0, 60, 1470, 40, 1470, 60, 0, 80, 0, 80, 1470, 60, 1470, 0, -20, 20, -20, 20, 0, 0, 0, 0, 0, -20, 0, -20, -20, 0, -20, 0, 0, 1420, 0, 1420, 20, 0, 20, 1420, 0, 1440, 0, 1440, 20, 1420, 20, 1440, 0, 2860, 0, 2860, 20, 1440, 20, 2860, 0, 2880, 0, 2880, 20, 2860, 20, 0, -20, 1420, -20, 1420, 0, 0, 0, 0, 0, -1420, 0, -1420, -20, 0, -20, 0, 0, 1420, 0, 1420, 20, 0, 20, 1420, 0, 1440, 0, 1440, 20, 1420, 20, 1440, 0, 2860, 0, 2860, 20, 1440, 20, 2860, 0, 2880, 0, 2880, 20, 2860, 20, 0, -20, 1420, -20, 1420, 0, 0, 0, 0, 0, -1420, 0, -1420, -20, 0, -20, 0, 0, 20, 0, 20, 200, 0, 200, 20, 0, 40, 0, 40, 200, 20, 200, 40, 0, 60, 0, 60, 200, 40, 200, 60, 0, 80, 0, 80, 200, 60, 200, 0, -20, 20, -20, 20, 0, 0, 0, 0, 0, -20, 0, -20, -20, 0, -20, 0, 0, 1500, 0, 1500, 20, 0, 20, 1500, 0, 1520, 0, 1520, 20, 1500, 20, 1520, 0, 3020, 0, 3020, 20, 1520, 20, 3020, 0, 3040, 0, 3040, 20, 3020, 20, 0, -20, 1500, -20, 1500, 0, 0, 0, 0, 0, -1500, 0, -1500, -20, 0, -20, 0, 0, 20, 0, 20, 1470, 0, 1470, 20, 0, 40, 0, 40, 1470, 20, 1470, 40, 0, 60, 0, 60, 1470, 40, 1470, 60, 0, 80, 0, 80, 1470, 60, 1470, 0, -20, 20, -20, 20, 0, 0, 0, 0, 0, -20, 0, -20, -20, 0, -20, 0, 0, 1420, 0, 1420, 20, 0, 20, 1420, 0, 1440, 0, 1440, 20, 1420, 20, 1440, 0, 2860, 0, 2860, 20, 1440, 20, 2860, 0, 2880, 0, 2880, 20, 2860, 20, 0, -20, 1420, -20, 1420, 0, 0, 0, 0, 0, -1420, 0, -1420, -20, 0, -20, 0, 0, 1420, 0, 1420, 20, 0, 20, 1420, 0, 1440, 0, 1440, 20, 1420, 20, 1440, 0, 2860, 0, 2860, 20, 1440, 20, 2860, 0, 2880, 0, 2880, 20, 2860, 20, 0, -20, 1420, -20, 1420, 0, 0, 0, 0, 0, -1420, 0, -1420, -20, 0, -20, 0, 0, 20, 0, 20, 200, 0, 200, 20, 0, 40, 0, 40, 200, 20, 200, 40, 0, 60, 0, 60, 200, 40, 200, 60, 0, 80, 0, 80, 200, 60, 200, 0, -20, 20, -20, 20, 0, 0, 0, 0, 0, -20, 0, -20, -20, 0, -20, 0, 0, 1500, 0, 1500, 20, 0, 20, 1500, 0, 1520, 0, 1520, 20, 1500, 20, 1520, 0, 3020, 0, 3020, 20, 1520, 20, 3020, 0, 3040, 0, 3040, 20, 3020, 20, 0, -20, 1500, -20, 1500, 0, 0, 0, 0, 0, -1500, 0, -1500, -20, 0, -20, 0, 0, 20, 0, 20, 1650, 0, 1650, 20, 0, 40, 0, 40, 1650, 20, 1650, 40, 0, 60, 0, 60, 1650, 40, 1650, 60, 0, 80, 0, 80, 1650, 60, 1650, 0, -20, 20, -20, 20, 0, 0, 0, 0, 0, -20, 0, -20, -20, 0, -20, 0, 0, 20, 0, 20, 1650, 0, 1650, 20, 0, 40, 0, 40, 1650, 20, 1650, 40, 0, 60, 0, 60, 1650, 40, 1650, 60, 0, 80, 0, 80, 1650, 60, 1650, 0, -20, 20, -20, 20, 0, 0, 0, 0, 0, -20, 0, -20, -20, 0, -20, 0, 0, 20, 0, 20, 20, 0, 20, 20, 0, 520, 0, 520, 20, 20, 20, 520, 0, 540, 0, 540, 20, 520, 20, 540, 0, 1040, 0, 1040, 20, 540, 20, 0, -500, 20, -500, 20, 0, 0, 0, 0, 0, -20, 0, -20, -500, 0, -500, 0, 0, 20, 0, 20, 20, 0, 20, 20, 0, 520, 0, 520, 20, 20, 20, 520, 0, 540, 0, 540, 20, 520, 20, 540, 0, 1040, 0, 1040, 20, 540, 20, 0, -500, 20, -500, 20, 0, 0, 0, 0, 0, -20, 0, -20, -500, 0, -500, 0, 0, 20, 0, 20, 20, 0, 20, 20, 0, 520, 0, 520, 20, 20, 20, 520, 0, 540, 0, 540, 20, 520, 20, 540, 0, 1040, 0, 1040, 20, 540, 20, 0, -500, 20, -500, 20, 0, 0, 0, 0, 0, -20, 0, -20, -500, 0, -500, 0, 0, 20, 0, 20, 20, 0, 20, 20, 0, 520, 0, 520, 20, 20, 20, 520, 0, 540, 0, 540, 20, 520, 20, 540, 0, 1040, 0, 1040, 20, 540, 20, 0, -500, 20, -500, 20, 0, 0, 0, 0, 0, -20, 0, -20, -500, 0, -500 ],
+                        "Size": 600
+                      }
+                    },
+                    "ItemSize": 2,
+                    "Type": "ARRAY_BUFFER"
+                  },
+                  "Vertex": {
+                    "UniqueID": 61,
+                    "Array": { 
+                      "Float32Array": { 
+                        "Elements": [ -109, 31.1, 145.01, -111, 31.1, 145.01, -111, 31.1, 147.01, -109, 31.1, 147.01, -111, 31.1, 145.01, -111, -18.9, 145.01, -111, -18.9, 147.01, -111, 31.1, 147.01, -111, -18.9, 145.01, -109, -18.9, 145.01, -109, -18.9, 147.01, -111, -18.9, 147.01, -109, -18.9, 145.01, -109, 31.1, 145.01, -109, 31.1, 147.01, -109, -18.9, 147.01, -109, -18.9, 145.01, -111, -18.9, 145.01, -111, 31.1, 145.01, -109, 31.1, 145.01, -109, 31.1, 147.01, -111, 31.1, 147.01, -111, -18.9, 147.01, -109, -18.9, 147.01, -9, 31, 145.01, -11, 31, 145.01, -11, 31, 147.01, -9, 31, 147.01, -11, 31, 145.01, -11, -19, 145.01, -11, -19, 147.01, -11, 31, 147.01, -11, -19, 145.01, -9, -19, 145.01, -9, -19, 147.01, -11, -19, 147.01, -9, -19, 145.01, -9, 31, 145.01, -9, 31, 147.01, -9, -19, 147.01, -9, -19, 145.01, -11, -19, 145.01, -11, 31, 145.01, -9, 31, 145.01, -9, 31, 147.01, -11, 31, 147.01, -11, -19, 147.01, -9, -19, 147.01, -9, 33, 0, -11, 33, 0, -11, 33, 165, -9, 33, 165, -11, 33, 0, -11, 31, 0, -11, 31, 165, -11, 33, 165, -11, 31, 0, -9, 31, 0, -9, 31, 165, -11, 31, 165, -9, 31, 0, -9, 33, 0, -9, 33, 165, -9, 31, 165, -9, 31, 0, -11, 31, 0, -11, 33, 0, -9, 33, 0, -9, 33, 165, -11, 33, 165, -11, 31, 165, -9, 31, 165, 43, 33, 0, 41, 33, 0, 41, 33, 165, 43, 33, 165, 41, 33, 0, 41, 31, 0, 41, 31, 165, 41, 33, 165, 41, 31, 0, 43, 31, 0, 43, 31, 165, 41, 31, 165, 43, 31, 0, 43, 33, 0, 43, 33, 165, 43, 31, 165, 43, 31, 0, 41, 31, 0, 41, 33, 0, 43, 33, 0, 43, 33, 165, 41, 33, 165, 41, 31, 165, 43, 31, 165, -10, 7, 144.94, -110, 7, 144.94, -110, 7, 146.94, -10, 7, 146.94, -110, 7, 144.94, -110, 5, 144.94, -110, 5, 146.94, -110, 7, 146.94, -110, 5, 144.94, -10, 5, 144.94, -10, 5, 146.94, -110, 5, 146.94, -10, 5, 144.94, -10, 7, 144.94, -10, 7, 146.94, -10, 5, 146.94, -10, 5, 144.94, -110, 5, 144.94, -110, 7, 144.94, -10, 7, 144.94, -10, 7, 146.94, -110, 7, 146.94, -110, 5, 146.94, -10, 5, 146.94, -9, 31, 59, -11, 31, 59, -11, 31, 61, -9, 31, 61, -11, 31, 59, -11, -19, 59, -11, -19, 61, -11, 31, 61, -11, -19, 59, -9, -19, 59, -9, -19, 61, -11, -19, 61, -9, -19, 59, -9, 31, 59, -9, 31, 61, -9, -19, 61, -9, -19, 59, -11, -19, 59, -11, 31, 59, -9, 31, 59, -9, 31, 61, -11, 31, 61, -11, -19, 61, -9, -19, 61, -9, 31, 109, -11, 31, 109, -11, 31, 111, -9, 31, 111, -11, 31, 109, -11, -19, 109, -11, -19, 111, -11, 31, 111, -11, -19, 109, -9, -19, 109, -9, -19, 111, -11, -19, 111, -9, -19, 109, -9, 31, 109, -9, 31, 111, -9, -19, 111, -9, -19, 109, -11, -19, 109, -11, 31, 109, -9, 31, 109, -9, 31, 111, -11, 31, 111, -11, -19, 111, -9, -19, 111, 43, 31, 59, 41, 31, 59, 41, 31, 61, 43, 31, 61, 41, 31, 59, 41, -19, 59, 41, -19, 61, 41, 31, 61, 41, -19, 59, 43, -19, 59, 43, -19, 61, 41, -19, 61, 43, -19, 59, 43, 31, 59, 43, 31, 61, 43, -19, 61, 43, -19, 59, 41, -19, 59, 41, 31, 59, 43, 31, 59, 43, 31, 61, 41, 31, 61, 41, -19, 61, 43, -19, 61, 43, 31, 109, 41, 31, 109, 41, 31, 111, 43, 31, 111, 41, 31, 109, 41, -19, 109, 41, -19, 111, 41, 31, 111, 41, -19, 109, 43, -19, 109, 43, -19, 111, 41, -19, 111, 43, -19, 109, 43, 31, 109, 43, 31, 111, 43, -19, 111, 43, -19, 109, 41, -19, 109, 41, 31, 109, 43, 31, 109, 43, 31, 111, 41, 31, 111, 41, -19, 111, 43, -19, 111, -152.98, 33, 0, -154.98, 33, 0, -154.98, 33, 147, -152.98, 33, 147, -154.98, 33, 0, -154.98, 31, 0, -154.98, 31, 147, -154.98, 33, 147, -154.98, 31, 0, -152.98, 31, 0, -152.98, 31, 147, -154.98, 31, 147, -152.98, 31, 0, -152.98, 33, 0, -152.98, 33, 147, -152.98, 31, 147, -152.98, 31, 0, -154.98, 31, 0, -154.98, 33, 0, -152.98, 33, 0, -152.98, 33, 147, -154.98, 33, 147, -154.98, 31, 147, -152.98, 31, 147, -11, 33, 3, -153, 33, 3, -153, 33, 5, -11, 33, 5, -153, 33, 3, -153, 31, 3, -153, 31, 5, -153, 33, 5, -153, 31, 3, -11, 31, 3, -11, 31, 5, -153, 31, 5, -11, 31, 3, -11, 33, 3, -11, 33, 5, -11, 31, 5, -11, 31, 3, -153, 31, 3, -153, 33, 3, -11, 33, 3, -11, 33, 5, -153, 33, 5, -153, 31, 5, -11, 31, 5, -11, 33, 145, -153, 33, 145, -153, 33, 147, -11, 33, 147, -153, 33, 145, -153, 31, 145, -153, 31, 147, -153, 33, 147, -153, 31, 145, -11, 31, 145, -11, 31, 147, -153, 31, 147, -11, 31, 145, -11, 33, 145, -11, 33, 147, -11, 31, 147, -11, 31, 145, -153, 31, 145, -153, 33, 145, -11, 33, 145, -11, 33, 147, -153, 33, 147, -153, 31, 147, -11, 31, 147, -109, 33, 144.99, -111, 33, 144.99, -111, 33, 164.99, -109, 33, 164.99, -111, 33, 144.99, -111, 31, 144.99, -111, 31, 164.99, -111, 33, 164.99, -111, 31, 144.99, -109, 31, 144.99, -109, 31, 164.99, -111, 31, 164.99, -109, 31, 144.99, -109, 33, 144.99, -109, 33, 164.99, -109, 31, 164.99, -109, 31, 144.99, -111, 31, 144.99, -111, 33, 144.99, -109, 33, 144.99, -109, 33, 164.99, -111, 33, 164.99, -111, 31, 164.99, -109, 31, 164.99, 41, 33, 163, -109, 33, 163, -109, 33, 165, 41, 33, 165, -109, 33, 163, -109, 31, 163, -109, 31, 165, -109, 33, 165, -109, 31, 163, 41, 31, 163, 41, 31, 165, -109, 31, 165, 41, 31, 163, 41, 33, 163, 41, 33, 165, 41, 31, 165, 41, 31, 163, -109, 31, 163, -109, 33, 163, 41, 33, 163, 41, 33, 165, -109, 33, 165, -109, 31, 165, 41, 31, 165, -152.98, -19, 0, -154.98, -19, 0, -154.98, -19, 147, -152.98, -19, 147, -154.98, -19, 0, -154.98, -21, 0, -154.98, -21, 147, -154.98, -19, 147, -154.98, -21, 0, -152.98, -21, 0, -152.98, -21, 147, -154.98, -21, 147, -152.98, -21, 0, -152.98, -19, 0, -152.98, -19, 147, -152.98, -21, 147, -152.98, -21, 0, -154.98, -21, 0, -154.98, -19, 0, -152.98, -19, 0, -152.98, -19, 147, -154.98, -19, 147, -154.98, -21, 147, -152.98, -21, 147, -11, -19, 3, -153, -19, 3, -153, -19, 5, -11, -19, 5, -153, -19, 3, -153, -21, 3, -153, -21, 5, -153, -19, 5, -153, -21, 3, -11, -21, 3, -11, -21, 5, -153, -21, 5, -11, -21, 3, -11, -19, 3, -11, -19, 5, -11, -21, 5, -11, -21, 3, -153, -21, 3, -153, -19, 3, -11, -19, 3, -11, -19, 5, -153, -19, 5, -153, -21, 5, -11, -21, 5, -11, -19, 145, -153, -19, 145, -153, -19, 147, -11, -19, 147, -153, -19, 145, -153, -21, 145, -153, -21, 147, -153, -19, 147, -153, -21, 145, -11, -21, 145, -11, -21, 147, -153, -21, 147, -11, -21, 145, -11, -19, 145, -11, -19, 147, -11, -21, 147, -11, -21, 145, -153, -21, 145, -153, -19, 145, -11, -19, 145, -11, -19, 147, -153, -19, 147, -153, -21, 147, -11, -21, 147, -109, -19, 144.99, -111, -19, 144.99, -111, -19, 164.99, -109, -19, 164.99, -111, -19, 144.99, -111, -21, 144.99, -111, -21, 164.99, -111, -19, 164.99, -111, -21, 144.99, -109, -21, 144.99, -109, -21, 164.99, -111, -21, 164.99, -109, -21, 144.99, -109, -19, 144.99, -109, -19, 164.99, -109, -21, 164.99, -109, -21, 144.99, -111, -21, 144.99, -111, -19, 144.99, -109, -19, 144.99, -109, -19, 164.99, -111, -19, 164.99, -111, -21, 164.99, -109, -21, 164.99, 41, -19, 163, -109, -19, 163, -109, -19, 165, 41, -19, 165, -109, -19, 163, -109, -21, 163, -109, -21, 165, -109, -19, 165, -109, -21, 163, 41, -21, 163, 41, -21, 165, -109, -21, 165, 41, -21, 163, 41, -19, 163, 41, -19, 165, 41, -21, 165, 41, -21, 163, -109, -21, 163, -109, -19, 163, 41, -19, 163, 41, -19, 165, -109, -19, 165, -109, -21, 165, 41, -21, 165, -9, -19, 0, -11, -19, 0, -11, -19, 165, -9, -19, 165, -11, -19, 0, -11, -21, 0, -11, -21, 165, -11, -19, 165, -11, -21, 0, -9, -21, 0, -9, -21, 165, -11, -21, 165, -9, -21, 0, -9, -19, 0, -9, -19, 165, -9, -21, 165, -9, -21, 0, -11, -21, 0, -11, -19, 0, -9, -19, 0, -9, -19, 165, -11, -19, 165, -11, -21, 165, -9, -21, 165, 43, -19, 0, 41, -19, 0, 41, -19, 165, 43, -19, 165, 41, -19, 0, 41, -21, 0, 41, -21, 165, 41, -19, 165, 41, -21, 0, 43, -21, 0, 43, -21, 165, 41, -21, 165, 43, -21, 0, 43, -19, 0, 43, -19, 165, 43, -21, 165, 43, -21, 0, 41, -21, 0, 41, -19, 0, 43, -19, 0, 43, -19, 165, 41, -19, 165, 41, -21, 165, 43, -21, 165, 43, 31, 163, 41, 31, 163, 41, 31, 165, 43, 31, 165, 41, 31, 163, 41, -19, 163, 41, -19, 165, 41, 31, 165, 41, -19, 163, 43, -19, 163, 43, -19, 165, 41, -19, 165, 43, -19, 163, 43, 31, 163, 43, 31, 165, 43, -19, 165, 43, -19, 163, 41, -19, 163, 41, 31, 163, 43, 31, 163, 43, 31, 165, 41, 31, 165, 41, -19, 165, 43, -19, 165, -153, 31, 3, -155, 31, 3, -155, 31, 5, -153, 31, 5, -155, 31, 3, -155, -19, 3, -155, -19, 5, -155, 31, 5, -155, -19, 3, -153, -19, 3, -153, -19, 5, -155, -19, 5, -153, -19, 3, -153, 31, 3, -153, 31, 5, -153, -19, 5, -153, -19, 3, -155, -19, 3, -155, 31, 3, -153, 31, 3, -153, 31, 5, -155, 31, 5, -155, -19, 5, -153, -19, 5, -9, 31, 3, -11, 31, 3, -11, 31, 5, -9, 31, 5, -11, 31, 3, -11, -19, 3, -11, -19, 5, -11, 31, 5, -11, -19, 3, -9, -19, 3, -9, -19, 5, -11, -19, 5, -9, -19, 3, -9, 31, 3, -9, 31, 5, -9, -19, 5, -9, -19, 3, -11, -19, 3, -11, 31, 3, -9, 31, 3, -9, 31, 5, -11, 31, 5, -11, -19, 5, -9, -19, 5, -153, 31, 145, -155, 31, 145, -155, 31, 147, -153, 31, 147, -155, 31, 145, -155, -19, 145, -155, -19, 147, -155, 31, 147, -155, -19, 145, -153, -19, 145, -153, -19, 147, -155, -19, 147, -153, -19, 145, -153, 31, 145, -153, 31, 147, -153, -19, 147, -153, -19, 145, -155, -19, 145, -155, 31, 145, -153, 31, 145, -153, 31, 147, -155, 31, 147, -155, -19, 147, -153, -19, 147 ],
+                        "Size": 600
+                      }
+                    },
+                    "ItemSize": 3,
+                    "Type": "ARRAY_BUFFER"
+                  }
+                }
+              }
+            } ]
+          }
+        } ]
+      }
+    } ]
+  }
+}

@@ -3,8 +3,38 @@
             [vr.pixa.pixa-model :refer [model keywordize]]
             [vr.pixa.rest :as REST :refer [POST<]]
             [vr.pixa.local-storage :as ls]
-            [cljs.core.async :refer [<!]])
+            [cljs.core.async :as a :refer [<!]])
   (:require-macros [cljs.core.async.macros :refer [go go-loop]]))
+
+(def web-view-in (a/chan))
+(def web-view-out (a/chan))
+
+
+(defmulti process-web-view-action! (fn [[event _]] event))
+
+(defmethod process-web-view-action! :default [[event payload]]
+  (println event " " payload))
+
+(defmethod process-web-view-action! :web-3d-view/load-material [[_ payload]]
+  (let [url (:url payload)]
+    (a/put! web-view-in {:event "load-material"
+                         :url url
+                         :data ""})))
+
+
+(defmethod process-web-view-action! :web-3d-view/load-texture [[_ payload]]
+  (let [url (:url payload)]
+    (a/put! web-view-in {:event "load-texture"
+                         :url url
+                         :data ""})))
+
+
+(defmethod process-web-view-action! :web-3d-view/load-obj [[_ payload]]
+  (let [url (:url payload)]
+    (a/put! web-view-in {:event "load-obj"
+                         :url url
+                         :data ""})))
+
 
 (defn offline? [state]
   (boolean (get-in state [:context :offline])))
@@ -124,8 +154,13 @@
            (dissoc :ta))
          (dissoc state :ta))))))
 
+
 (defn init []
-  (println "init")
+  ;; web-view event handler
+  (go-loop []
+    (let [web-view-action (<! web-view-out)]
+      (process-web-view-action! web-view-action))
+    (recur))
 
   (let [connection-info (ls/net-connected)]
     (go
