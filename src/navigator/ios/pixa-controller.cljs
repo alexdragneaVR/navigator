@@ -106,6 +106,7 @@
         (-> @model
             (assoc-in [:selected :project-id] project-id)
             (go-to [:topic project-id])
+            (swapm! model)
             (assoc-in current-path (first-val (<! (load-topic project-id))))
             (swapm! model :save))
         (catch :default e (println e))))))

@@ -22,6 +22,7 @@
                                                       :source-paths ["src" "env/dev"]
                                                       :figwheel     true
                                                       :compiler     {:output-to     "target/ios/not-used.js"
+                                                                     :output-wrapper true
                                                                      :main          "env.ios.main"
                                                                      :output-dir    "target/ios"
                                                                      :optimizations :none}}
