@@ -1,5 +1,6 @@
 (ns vr.pixa.local-storage
   (:require [cljs.core.async :refer [put! promise-chan] :as async]
+            [cljs.reader :as reader]
             [vr.pi :refer [error]])
   (:require-macros [cljs.core.async.macros :refer [go go-loop]]
                    [vr.macros :refer [gosafe]]))
@@ -21,7 +22,7 @@
     (-> NetInfo
       .-isConnected
       (.addEventListener "connect"
-        #(put! out (if % :connected :disconnected))))
+        #(put! out [true (if % :connected :disconnected)])))
     out))
 
 
@@ -31,7 +32,7 @@
   []
   (let [out (promise-chan)
         handler (fn handler [connection]
-                  (put! out connection)
+                  (put! out [true (if connection :connected :disconnected)])
                   (-> NetInfo .-isConnected
                       (.removeEventListener "connect" handler)))]
     (-> NetInfo
@@ -40,7 +41,8 @@
     (-> NetInfo
       .-isConnected
       .fetch
-      (.then #(put! out %)))
+      (.then #(put! out (if % [true :connected] [true :disconnected])))
+      (.catch #(put! out [false %])))
     out))
 
 (comment
@@ -48,7 +50,7 @@
     (go-loop []
       (println (<! connection-info))
       (recur)))
-  (gosafe
+  (go
     (println (<! (net-connected?)))))
 
 (defn save! "
@@ -83,7 +85,7 @@
   (let [result (promise-chan)]
     (-> AsyncStorage
       (.getItem (pr-str key))
-      (.then #(put! result [true (cljs.reader/read-string %)]))
+      (.then #(put! result [true (reader/read-string %)]))
       (.catch #(put! result [false %])))
     result))
 

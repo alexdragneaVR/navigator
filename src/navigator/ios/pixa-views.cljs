@@ -1,8 +1,13 @@
 (ns vr.pixa.pixa-views
   (:require [reagent.core :as r]
             [vr.pixa.pixa-controller :as controller]
+<<<<<<< HEAD
             [vr.pixa.components :refer [ReactNative text view button rn-list-view scroll-view animated-view animated-event touchable-highlight DataSource icon-back image touchable-opacity
                                         animated-value animated-timing ease ease-out camera-roll ImagePicker]]))
+=======
+            [vr.pixa.components :as components
+                                :refer [ReactNative text view button rn-list-view scroll-view animated-view animated-event touchable-highlight DataSource]]))
+>>>>>>> ef1d1a63129e7983dce2136f9665acb36861f440
 
 ; styles
 
@@ -72,8 +77,7 @@
     :will-update upd}))
 
 (defn screen-component [state]
-  (let [dataSource (data-source {:rowHasChanged not=})
-        width (.-width (Dimensions.get "window"))
+  (let [width (.-width (Dimensions.get "window"))
         [page id] (controller/current-page state)
         offset (cond
                      (= :teams page) 0
