@@ -59,6 +59,7 @@
     (a/pipe action-input input)
     (a/pipe output action-output)
 
+    (println "loaded 3d view")
     (go-loop []
       (let [[val c] (a/alts! [input closer])]
         (when-not (or (= c closer) (nil? val))
@@ -71,6 +72,7 @@
     (r/create-class
       {:reagent-render
          (fn [{:keys [url style action-input action-output] :as props}]
+           (println "render 3d view")
            [view (merge style {:on-layout #(let [values (-> % .-nativeEvent .-layout)
                                                  layout {:layout {:x (.-x values) :y (.-y values)
                                                                   :width (.-width values) :height (.-height values)}}]
@@ -79,9 +81,13 @@
             [web-view {:ref #(reset! webview %)
                        :source {:uri url}
                        :bounces false
+                       :on-load (fn [] (println "loaded browser"))
                        :scroll-enabled false
+                       :start-in-loading-state true
+                       :javascript-enabled true
                        :on-message #(a/put! output %)}]])
-
-
        :component-will-unmount
-         (fn [_] (a/put! closer :close) (a/close! closer))})))
+         (fn [_]
+           (println "unmount 3d view")
+           (a/put! closer :close)
+           (a/close! closer))})))

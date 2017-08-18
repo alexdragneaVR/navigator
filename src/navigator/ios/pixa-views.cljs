@@ -74,7 +74,7 @@
 (defn screen-component [state]
   (let [dataSource (data-source {:rowHasChanged not=})
         width (.-width (Dimensions.get "window"))
-        image-uri "file:///Users/test/Library/Developer/CoreSimulator/Devices/F15AA489-908C-4BA9-BA0E-2E892C3EA274/data/Containers/Data/Application/FFFB14D4-EC13-437D-8C29-B1E8AA64A803/tmp/A842732A-F567-4534-9092-4F649A2EB0B2.jpg"
+        image-uri ""
         [page id] (controller/current-page state)
         offset (cond
                      (= :teams page) 0

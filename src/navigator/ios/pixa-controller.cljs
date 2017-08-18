@@ -13,27 +13,34 @@
 (defmulti process-web-view-action! (fn [[event _]] event))
 
 (defmethod process-web-view-action! :default [[event payload]]
-  (println event " " payload))
+  (println "web-3d-view event" event payload))
+
+(defn load-file! [event url]
+  (println "loading" url)
+  (go
+    (let [[_ file-data] (<! (ls/get-file-contents! (str "http://10.0.1.28:8080/" url)))]
+      (println "sending back" url)
+      (a/put! web-view-in {:event event
+                           :url url
+                           :data file-data}))))
+
+(defn load-image! [event url]
+  (println "loading" url)
+  (go
+    (let [[_ file-data] (<! (ls/get-image-base64! (str "http://10.0.1.28:8080/" url)))]
+      (println "sending back" url)
+      (a/put! web-view-in {:event event
+                           :url url
+                           :data file-data}))))
 
 (defmethod process-web-view-action! :web-3d-view/load-material [[_ payload]]
-  (let [url (:url payload)]
-    (a/put! web-view-in {:event "load-material"
-                         :url url
-                         :data ""})))
-
+  (load-file! "load-material" (:url payload)))
 
 (defmethod process-web-view-action! :web-3d-view/load-texture [[_ payload]]
-  (let [url (:url payload)]
-    (a/put! web-view-in {:event "load-texture"
-                         :url url
-                         :data ""})))
-
+  (load-image! "load-texture" (:url payload)))
 
 (defmethod process-web-view-action! :web-3d-view/load-obj [[_ payload]]
-  (let [url (:url payload)]
-    (a/put! web-view-in {:event "load-obj"
-                         :url url
-                         :data ""})))
+  (load-file! "load-obj" (:url payload)))
 
 
 (defn offline? [state]
