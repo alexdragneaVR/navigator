@@ -101,9 +101,8 @@
        [view {:style {:margin-top 20
                       :width width}}
         [header "Details" "Back"]
-        [view {:style {:background-color "lightgrey" :height 1000}}
-         [button {:style {:margin 50} :title "Camera Roll" :on-press #(-> camera-roll
-                                                                          (.getPhotos #js{:first 20, :assetType "All"})
-                                                                          (.then (fn [r] (println r))))}]
-         [button {:style {:margin-left 50 :margin-top 70} :title "Camera" :on-press #(-> ImagePicker
-                                                                                         (.showImagePicker nil (fn [r] (println r))))}]]]]))
+        (when (= :topic page)
+          [components/web-3d-view {:style {:flex 1 :height 500}
+                                   :url "web/threejs3d/new_3d.html"
+                                   :action-input controller/web-view-in
+                                   :action-output controller/web-view-out}])]]))

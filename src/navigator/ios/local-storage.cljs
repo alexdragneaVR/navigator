@@ -8,8 +8,8 @@
 (def ReactNative (js/require "react-native"))
 (def AsyncStorage (-> ReactNative .-AsyncStorage))
 (def NetInfo (-> ReactNative .-NetInfo))
-
-
+(def RNFetchBlob (.-default (js/require "react-native-fetch-blob")))
+(def SHA1 (js/require "crypto-js/sha1"))
 
 
 (defn net-connected
@@ -90,7 +90,50 @@
     result))
 
 
+(defn fetch-file! [url]
+  (let [result (promise-chan)]
+    (-> RNFetchBlob
+      (.config #js{})
+      (.fetch "GET" url)
+      (.then #(.text %))
+      (.then #(put! result [true %]))
+      (.catch #(put! result [false %])))
+    result))
+
+(defn fetch-image-base64! [url]
+  (let [result (promise-chan)]
+    (-> RNFetchBlob
+      (.config #js{})
+      (.fetch "GET" url)
+      (.then #(.base64 %))
+      (.then #(str "data:image/jpeg;base64," %))
+      (.then #(put! result [true %]))
+      (.catch #(put! result [false %])))
+    result))
+
+
+(defn with-cache [f]
+  (fn get-file! [url]
+    (go (let [key (SHA1 url)
+              [cache-ok? cached-value] (<! (load! key))]
+          (if (and cache-ok? (not (nil? cached-value)))
+            [true cached-value]
+            (let [[ok? result] (<! (f url))]
+              (if ok?
+                (do (save! key result)
+                    [true result])
+                [false result])))))))
+
+(def get-file-contents! (with-cache fetch-file!))
+
+(def get-image-base64! (with-cache fetch-image-base64!))
+
+
 (comment
+  ;this clears the whole thing, for all apps
+  (.clear AsyncStorage)
+
+  (go (println (<! (get-file-contents! "http://10.0.1.28:8080/static/3d/fixture1.mtl"))))
   ;;save a value
   (go (println (<! (save! :value {:hello "world"})))) ;; should return [true {:hello "world"}]
   (go (println (<! (save! {:hello "world"} {:hello "world"})))) ;; should return [true {:hello "world"}]

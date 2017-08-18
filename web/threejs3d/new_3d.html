@@ -80,169 +80,179 @@
 	<script src="static/js/jquery.min.js"></script>
 
 	<script>
-		function debounce(func, wait, immediate) {
-			var timeout;
-			return function() {
-				var context = this,
-					args = arguments;
-				var later = function() {
-					timeout = null;
-					if (!immediate) func.apply(context, args);
-				};
-				var callNow = immediate && !timeout;
-				clearTimeout(timeout);
-				timeout = setTimeout(later, wait);
-				if (callNow) func.apply(context, args);
-			};
-		}
+		document.addEventListener("DOMContentLoaded", function() {
+			function enqueue(fn, delay) {
+				var timeout;
+				var queue = [];
+				return function() {
+					var ctx = this,
+						args = arguments;
 
-		var ReactNativeComms = {
-			_queue: [],
-			_postMessage: function(m) {
-				if (window.postMessage && window.postMessage.length === 1) {
-					window.postMessage(m);
+					clearTimeout(timeout);
+					timeout = setTimeout(function later() {
+						var item = queue.length;
+						var fn = queue.shift();
+						if (fn) {
+							fn();
+							console.log("excuting item", item);
+							console.log("queue size is", queue.length);
+							setTimeout(later, delay);
+						}
+					}, delay);
+
+					queue.push(function() {
+						fn.apply(ctx, args);
+					});
+
+				};
+			}
+
+			var ReactNativeComms = {
+				_postMessage: function(m) {
+					if (window.postMessage && window.postMessage.length === 1) {
+						window.postMessage(m);
+						return;
+					}
+					console.info("DEBUG MODE", m);
+				},
+				/**
+				 * Attaches a message handler that is called when a React Native message is received
+				 *    fn - the message handler
+				 *    ctx? - optional context object (i.e the 'this' of the fn)
+				 */
+				addReactNativeEventListener: function(fn, ctx) {
+					document.addEventListener("message", function(e) {
+						try {
+							fn.call(ctx, JSON.parse(e.data));
+						} catch (e) {
+							fn.call(ctx, null, e);
+						}
+					});
+				},
+				addReactNativeEventListenerOnce: function(event, fn, ctx) {
+					this.addReactNativeEventListener(function once(e) {
+						if (e.data.event === event) {
+							fn.call(ctx, e);
+							this.removeReactNativeEventListener(once);
+						}
+					}, this);
+				},
+				removeReactNativeEventListener: function(fn) {
+					document.removeEventListener("message", fn);
+				},
+				postToReactNative: function(data) {
+					var value = JSON.stringify({
+						data: data
+					});
+					try {
+						this._postMessage(value);
+					} catch (e) {
+						console.error("Error in posting message to react native");
+						console.trace(e);
+					}
+				},
+				_queue: [],
+				/**
+				 * Send a message to react native. message can be any valid json value.
+				 *    data - any valid json value except functions
+				 */
+				loadUrl: function(event, url) {
+					var value = JSON.stringify({
+						data: {
+							event: event,
+							url: url
+						}
+					});
+					var that = this;
+					that._queue.push(value);
+					return new Promise(function(resolve) {
+						that.addReactNativeEventListener(function loaded(e) {
+							if (e.data.url === url && e.data.event === event) {
+								console.log("Got back data for " + url)
+								that.removeReactNativeEventListener(loaded);
+								resolve(e.data);
+							}
+						})
+					});
+				},
+
+			};
+
+			setInterval(function processRNMessageQueue() {
+				if (ReactNativeComms._queue.length === 0) {
 					return;
 				}
-				console.info("DEBUG MODE", m);
-			},
-			_flushQueue: debounce(function flushQueue() {
-				var queue = this._queue;
-				var that = this;
-				setTimeout(function() {
-					var fn = queue.shift();
-					if (fn) {
-						fn();
-						flushQueue.call(that);
-					}
-				}, 10);
-			}, 100),
-			/**
-			 * Attaches a message handler that is called when a React Native message is received
-			 *    fn - the message handler
-			 *    ctx? - optional context object (i.e the 'this' of the fn)
-			 */
-			addReactNativeEventListener: function(fn, ctx) {
-				document.addEventListener("message", function(e) {
-					try {
-						fn.call(ctx, JSON.parse(e.data));
-					} catch (e) {
-						fn.call(ctx, null, e);
-					}
-				});
-			},
-			addReactNativeEventListenerOnce: function(event, fn, ctx) {
-				this.addReactNativeEventListener(function once(e) {
-					if (e.data.event === event) {
-						fn.call(ctx, e);
-						this.removeReactNativeEventListener(once);
-					}
-				}, this);
-			},
-			removeReactNativeEventListener: function(fn) {
-				document.removeEventListener("message", fn);
-			},
-			postToReactNative : function(data){
-				var value = JSON.stringify({
-					data : data
-				});
-				try{
-					this._postMessage(value);
-				}catch (e){
-					console.error("Error in posting message to react native");
-					console.trace(e);
+				var value = ReactNativeComms._queue.shift();
+				if (value) {
+					ReactNativeComms._postMessage(value);
 				}
-			},
-			/**
-			 * Send a message to react native. message can be any valid json value.
-			 *    data - any valid json value except functions
-			 */
-			loadUrl: function(event, url) {
-				var value = JSON.stringify({
-					data: {
-						event : event,
-						url : url
-					}
-				});
-				var that = this;
-				this._queue.push(function() {
-					console.log("posting message", value);
-					try {
-						that._postMessage(value);
-					} catch (e) {
-						console.error("Error in loading url " + url);
-						console.trace(e);
-						return Promise.reject(e);
-					}
-				});
-				this._flushQueue();
-				return new Promise(function(resolve){
-					that.addReactNativeEventListener(function loaded(e){
-						if(e.data.url === url && e.data.event === event){
-							that.removeReactNativeEventListener(loaded);
-							resolve(e.data);
-						}
-					})
-				});
-			},
+			}, 10);
 
-		};
 
-		document.addEventListener("DOMContentLoaded", function() {
+			ReactNativeComms.postToReactNative({ event : "test" })
 
-			function ReactNativeLoader(event, manager){
+			function ReactNativeLoader(event, manager) {
 				this.event = event;
 				this.manager = manager;
-
+				this.path = null;
 			}
-			ReactNativeLoader.prototype.load = function(url, onLoad, onProgress, onError){
+
+			ReactNativeLoader.prototype.setPath = function(path) {
+				this.path = path;
+			};
+			ReactNativeLoader.prototype.load = function(url, onLoad, onProgress, onError) {
 				var scope = this;
 				var cache = THREE.Cache;
+				var finalUrl = this.path ? this.path + url : url;
 
-				var cached = cache.get(url);
+				var cached = cache.get(finalUrl);
 
-				scope.manager.itemStart(url);
+				scope.manager.itemStart(finalUrl);
 
 				if (cached) {
 					setTimeout(function() {
 						if (onLoad) {
 							onLoad(cached);
 						}
-						scope.manager.itemEnd(url);
+						scope.manager.itemEnd(finalUrl);
 					}, 100);
 				} else {
 
-					ReactNativeComms.loadUrl(this.event, url).then(function(e){
-						if(onLoad){
+					ReactNativeComms.loadUrl(this.event, finalUrl).then(function(e) {
+						if (onLoad) {
 							onLoad(e.data);
 						}
-						cache.add(url, e.data);
-						scope.manager.itemEnd(url);
-					}, function(e){
-						scope.manager.itemError(url);
-						scope.manager.itemEnd(url);
+						cache.add(finalUrl, e.data);
+						scope.manager.itemEnd(finalUrl);
+					}, function(e) {
+						scope.manager.itemError(finalUrl);
+						scope.manager.itemEnd(finalUrl);
 					});
 				}
 			};
 
-			function ReactNativeTextureLoader(manager){
+			function ReactNativeTextureLoader(manager) {
 				this.loader = new ReactNativeLoader("load-texture", manager);
 			}
-
-			ReactNativeTextureLoader.prototype.load = function(url, onLoad, onProgress, onError){
+			ReactNativeTextureLoader.prototype.setPath = function(path) {
+				this.loader.setPath(path);
+			}
+			ReactNativeTextureLoader.prototype.load = function(url, onLoad, onProgress, onError) {
 				var scope = this.loader;
+				var finalUrl = scope.path ? scope.path + url : url;
 				var texture = new THREE.Texture();
-				var image = document.createElementNS( 'http://www.w3.org/1999/xhtml', 'img' );
+				var image = document.createElementNS('http://www.w3.org/1999/xhtml', 'img');
 
-				this.loader.load(url, function(imageData){
+				this.loader.load(finalUrl, function(imageData) {
 
-					image.addEventListener( 'load', function () {
-						if ( onLoad ) onLoad( texture );
+					image.addEventListener('load', function() {
+						if (onLoad) onLoad(texture);
 
-						var isJPEG = imageData.search( /\.(jpg|jpeg)$/ ) > 0 || imageData.search( /^data\:image\/jpeg/ ) === 0;
+						var isJPEG = imageData.search(/\.(jpg|jpeg)$/) > 0 || imageData.search(/^data\:image\/jpeg/) === 0;
 						texture.format = isJPEG ? THREE.RGBFormat : THREE.RGBAFormat;
 						texture.needsUpdate = true;
 
-					}, false );
+					}, false);
 					image.src = imageData;
 					texture.image = image;
 
@@ -730,32 +740,38 @@
 				return l;
 			}
 
-			function defaultTextureLoaderFactory(scope, url){
+			function defaultTextureLoaderFactory(scope, url) {
 
-				var loader = THREE.Loader.Handlers.get( url );
-				var manager = ( scope.manager !== undefined ) ? scope.manager : THREE.DefaultLoadingManager;
+				var loader = THREE.Loader.Handlers.get(url);
+				var manager = (scope.manager !== undefined) ? scope.manager : THREE.DefaultLoadingManager;
 
-				if ( loader === null ) {
+				if (loader === null) {
 
-					loader = new THREE.TextureLoader( manager );
+					loader = new THREE.TextureLoader(manager);
 
 				}
 
-				if ( loader.setCrossOrigin ) loader.setCrossOrigin( this.crossOrigin );
+				if (loader.setCrossOrigin) loader.setCrossOrigin(this.crossOrigin);
 
 				return loader;
 			}
 
-			function reactNativeTextureLoaderFactory(scope){
-				return new ReactNativeTextureLoader(scope.manager);
+			function reactNativeTextureLoaderFactory(scope) {
+				var loader = new ReactNativeTextureLoader(scope.manager);
+				loader.setPath(scope.path);
+				return loader;
 			}
 
 			function reactNativeMaterialLoaderFactory(scope) {
-				return new ReactNativeLoader("load-material",scope.manager);
+				var loader = new ReactNativeLoader("load-material", scope.manager);
+				loader.setPath(scope.path);
+				return loader;
 			}
 
-			function reactNativeObjLoaderFactory(scope){
-				return new ReactNativeLoader("load-obj", scope.manager);
+			function reactNativeObjLoaderFactory(scope) {
+				var loader = new ReactNativeLoader("load-obj", scope.manager);
+				loader.setPath(scope.path);
+				return loader;
 			}
 
 
