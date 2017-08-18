@@ -67,7 +67,7 @@
    (swap! atom (constantly value))))
 
 (defn show-team [team-id]
-  (print "show-team" team-id)
+  ; (print "show-team" team-id)
   (-> @model
       (go-to [:team team-id])
       (swapm! model :save)))
@@ -112,7 +112,7 @@
         (catch :default e (println e))))))
 
 (defn back []
-  (print "back")
+  ; (print "back")
   (-> @model
       (go-back)
       (swapm! model :save)))

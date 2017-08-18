@@ -1,8 +1,8 @@
 (ns vr.pixa.pixa-views
   (:require [reagent.core :as r]
             [vr.pixa.pixa-controller :as controller]
-            [vr.pixa.components :as components
-                                :refer [ReactNative text view button rn-list-view scroll-view animated-view animated-event touchable-highlight DataSource icon-back image touchable-opacity animated-value animated-timing ease ease-out camera-roll ImagePicker]]))
+            [vr.pixa.components :refer [ReactNative text view button rn-list-view scroll-view animated-view animated-event touchable-highlight DataSource icon-back image touchable-opacity
+                                        animated-value animated-timing ease ease-out camera-roll ImagePicker]]))
 
 ; styles
 
@@ -72,12 +72,14 @@
     :will-update upd}))
 
 (defn screen-component [state]
-  (let [width (.-width (Dimensions.get "window"))
+  (let [dataSource (data-source {:rowHasChanged not=})
+        width (.-width (Dimensions.get "window"))
+        image-uri "file:///Users/test/Library/Developer/CoreSimulator/Devices/F15AA489-908C-4BA9-BA0E-2E892C3EA274/data/Containers/Data/Application/FFFB14D4-EC13-437D-8C29-B1E8AA64A803/tmp/A842732A-F567-4534-9092-4F649A2EB0B2.jpg"
         [page id] (controller/current-page state)
         offset (cond
                      (= :teams page) 0
-                     (= :team page) -375
-                     (= :topic page) -750
+                     (= :team page) (* -1 width)
+                     (= :topic page) (* -2 width)
                     :else 0)]
 
       [animated-view {:style {:flex-direction "row"
@@ -106,4 +108,7 @@
                                                                           (.getPhotos #js{:first 20, :assetType "All"})
                                                                           (.then (fn [r] (println r))))}]
          [button {:style {:margin-left 50 :margin-top 70} :title "Camera" :on-press #(-> ImagePicker
-                                                                                         (.showImagePicker nil (fn [r] (println r))))}]]]]))
+                                                                                         (.showImagePicker nil (fn [r] (println (.-uri r)))))}]
+         [view {:style {:height 400 :width 400 :background-color "grey" :margin-top 90 :margin-left 10}}
+          (if (= image-uri "") [text ""] [image {:source (js/require (if (= image-uri "") "" image-uri))
+                                                 :style {:width 300 :height 300}}])]]]]))
