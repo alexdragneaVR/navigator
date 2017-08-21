@@ -4,11 +4,13 @@
   (:require-macros [cljs.core.async.macros :refer [go-loop]]))
 
 (def ReactNative (js/require "react-native"))
-(def ImagePicker (js/require "react-native-image-picker"))
 
 (def app-registry (.-AppRegistry ReactNative))
 (def text (r/adapt-react-class (.-Text ReactNative)))
+(def text-input (r/adapt-react-class (.-TextInput ReactNative)))
 (def view (r/adapt-react-class (.-View ReactNative)))
+(def scroll-view (r/adapt-react-class (.-ScrollView ReactNative)))
+(def keyboard-avoid-view (r/adapt-react-class (.-KeyboardAvoidingView ReactNative)))
 (def button (r/adapt-react-class (.-Button ReactNative)))
 (def rn-list-view (r/adapt-react-class (.-ListView ReactNative)))
 (def scroll-view (r/adapt-react-class (.-ScrollView ReactNative)))
@@ -17,7 +19,6 @@
 (def touchable-opacity (r/adapt-react-class (.-TouchableOpacity ReactNative)))
 (def image (r/adapt-react-class (.-Image ReactNative)))
 (def camera-roll (.-CameraRoll ReactNative))
-(def web-view (r/adapt-react-class (.-WebView ReactNative)))
 ; (def camera (r/adapt-react-class (.-Camera ReactNativeCamera)))
 
 (def animated-value (r/adapt-react-class (-> ReactNative .-Animated .-Value)))
@@ -30,6 +31,7 @@
 (def icon-back (js/require "./images/icon-back.png"))
 (def chat-icon (js/require "./images/chat-icon.png"))
 (def project-icon (js/require "./images/project-icon.png"))
+(def camera-icon (js/require "./images/add-photo.png"))
 
 (defn animated-event [props]
   (let [event-fn (-> ReactNative .-Animated .-event)]
@@ -59,7 +61,6 @@
     (a/pipe action-input input)
     (a/pipe output action-output)
 
-    (println "loaded 3d view")
     (go-loop []
       (let [[val c] (a/alts! [input closer])]
         (when-not (or (= c closer) (nil? val))
@@ -72,7 +73,6 @@
     (r/create-class
       {:reagent-render
          (fn [{:keys [url style action-input action-output] :as props}]
-           (println "render 3d view")
            [view (merge style {:on-layout #(let [values (-> % .-nativeEvent .-layout)
                                                  layout {:layout {:x (.-x values) :y (.-y values)
                                                                   :width (.-width values) :height (.-height values)}}]
@@ -81,13 +81,9 @@
             [web-view {:ref #(reset! webview %)
                        :source {:uri url}
                        :bounces false
-                       :on-load (fn [] (println "loaded browser"))
                        :scroll-enabled false
-                       :start-in-loading-state true
-                       :javascript-enabled true
                        :on-message #(a/put! output %)}]])
+
+
        :component-will-unmount
-         (fn [_]
-           (println "unmount 3d view")
-           (a/put! closer :close)
-           (a/close! closer))})))
+         (fn [_] (a/put! closer :close) (a/close! closer))})))

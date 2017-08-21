@@ -7,7 +7,9 @@
   },
   "modules": [
     "react-native",
-    "react-native-image-picker"
+    "react-native-image-picker",
+    "react-native-fetch-blob",
+    "crypto-js/sha1"
   ],
   "imageDirs": [
     "images"

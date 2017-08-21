@@ -2,7 +2,7 @@
   (:require [reagent.core :as r]
             [vr.pixa.pixa-controller :as controller]
             [vr.pixa.components :refer [ReactNative text view button rn-list-view scroll-view animated-view animated-event touchable-highlight DataSource icon-back image touchable-opacity
-                                        animated-value animated-timing ease ease-out camera-roll ImagePicker]]))
+                                        animated-value animated-timing ease ease-out camera-roll text-input camera-icon keyboard-avoid-view scroll-view]]))
 
 ; styles
 
@@ -74,7 +74,7 @@
 (defn screen-component [state]
   (let [dataSource (data-source {:rowHasChanged not=})
         width (.-width (Dimensions.get "window"))
-        image-uri ""
+        height (.-height (Dimensions.get "window"))
         [page id] (controller/current-page state)
         offset (cond
                      (= :teams page) 0
@@ -103,12 +103,25 @@
        [view {:style {:margin-top 20
                       :width width}}
         [header "Details" "Back"]
-        [view {:style {:background-color "lightgrey" :height 1000}}
-         [button {:style {:margin 50} :title "Camera Roll" :on-press #(-> camera-roll
-                                                                          (.getPhotos #js{:first 20, :assetType "All"})
-                                                                          (.then (fn [r] (println r))))}]
-         [button {:style {:margin-left 50 :margin-top 70} :title "Camera" :on-press #(-> ImagePicker
-                                                                                         (.showImagePicker nil (fn [r] (println (.-uri r)))))}]
-         [view {:style {:height 400 :width 400 :background-color "grey" :margin-top 90 :margin-left 10}}
-          (if (= image-uri "") [text ""] [image {:source (js/require (if (= image-uri "") "" image-uri))
-                                                 :style {:width 300 :height 300}}])]]]]))
+        [scroll-view {:style {:height (- height 100)}}
+         (when-let [messages (-> (get-in state (get-in state [:selected :path]))
+                               :messages
+                               vals)]
+          (for [m messages]
+           ^{:key (:id m)}
+           [view {:style {:margin-left 5 :margin-right 5}}
+            [text {:style {:font-weight "bold" :text-align (if (= (:store m) {}) "left" "right")}}
+             [text (first (first (:user m)))]]
+            [text {:style {:padding 5 :text-align (if (= (:store m) {}) "left" "right")}} (:message m)]]))
+         (when-let [path (:new-picture-data-url state)]
+
+           [view {:style {:height 500 :width "auto"}}
+             [image {:source {:uri path}
+                     :style {:width "auto" :height 480 :margin 10}
+                     :resize-mode "stretch"}]])]
+        [keyboard-avoid-view {:style {:margin-top 5 :height 100 :flex 1 :flex-direction "row"} :behavior "padding"}
+        ;  [button {:style {:flex 1 :height 30 :border-color "grey" :border-width 0.5} :title "Camera" :on-press #(controller/take-photo!)}]
+         [touchable-highlight {:on-press #(controller/take-photo!)}
+          [image {:style {:margin-left 10} :source camera-icon}]]
+         [text-input {:style {:flex 3 :height 30 :border-width 1 :border-color "grey" :margin-left 10}}]
+         [button {:style {:flex 1 :height 30} :title "Send" :on-press #(controller/send-picture)}]]]]))

@@ -9,6 +9,8 @@
 (def AsyncStorage (-> ReactNative .-AsyncStorage))
 (def NetInfo (-> ReactNative .-NetInfo))
 (def RNFetchBlob (.-default (js/require "react-native-fetch-blob")))
+(def ImagePicker (js/require "react-native-image-picker"))
+
 (def SHA1 (js/require "crypto-js/sha1"))
 
 
@@ -111,6 +113,29 @@
       (.catch #(put! result [false %])))
     result))
 
+(defn load-image-base64! [path]
+  (let [result (promise-chan)]
+    (-> RNFetchBlob
+      .-fs
+      (.readFile path "base64")
+      (.then #(str "data:image/jpeg;base64," %))
+      (.then #(put! result [true %]))
+      (.catch #(put! result [false %])))
+    result))
+
+(defn show-image-picker!
+  ([] (show-image-picker! nil))
+  ([options]
+   (let [result (promise-chan)]
+     (-> ImagePicker
+        (.showImagePicker options #(put! result [true (.-data %)])))
+     result)))
+
+
+(defn take-photo! []
+  (go
+    (let [[_ path] (<! (show-image-picker!))]
+      [true (str "data:image/jpeg;base64," path)])))
 
 (defn with-cache [f]
   (fn get-file! [url]

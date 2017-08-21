@@ -13,34 +13,27 @@
 (defmulti process-web-view-action! (fn [[event _]] event))
 
 (defmethod process-web-view-action! :default [[event payload]]
-  (println "web-3d-view event" event payload))
-
-(defn load-file! [event url]
-  (println "loading" url)
-  (go
-    (let [[_ file-data] (<! (ls/get-file-contents! (str "http://10.0.1.28:8080/" url)))]
-      (println "sending back" url)
-      (a/put! web-view-in {:event event
-                           :url url
-                           :data file-data}))))
-
-(defn load-image! [event url]
-  (println "loading" url)
-  (go
-    (let [[_ file-data] (<! (ls/get-image-base64! (str "http://10.0.1.28:8080/" url)))]
-      (println "sending back" url)
-      (a/put! web-view-in {:event event
-                           :url url
-                           :data file-data}))))
+  (println event " " payload))
 
 (defmethod process-web-view-action! :web-3d-view/load-material [[_ payload]]
-  (load-file! "load-material" (:url payload)))
+  (let [url (:url payload)]
+    (a/put! web-view-in {:event "load-material"
+                         :url url
+                         :data ""})))
+
 
 (defmethod process-web-view-action! :web-3d-view/load-texture [[_ payload]]
-  (load-image! "load-texture" (:url payload)))
+  (let [url (:url payload)]
+    (a/put! web-view-in {:event "load-texture"
+                         :url url
+                         :data ""})))
+
 
 (defmethod process-web-view-action! :web-3d-view/load-obj [[_ payload]]
-  (load-file! "load-obj" (:url payload)))
+  (let [url (:url payload)]
+    (a/put! web-view-in {:event "load-obj"
+                         :url url
+                         :data ""})))
 
 
 (defn offline? [state]
@@ -112,6 +105,7 @@
       (try
         (-> @model
             (assoc-in [:selected :project-id] project-id)
+            (assoc-in [:selected :path] current-path)
             (go-to [:topic project-id])
             (swapm! model)
             (assoc-in current-path (first-val (<! (load-topic project-id))))
@@ -161,6 +155,35 @@
            (assoc key (:ta state))
            (dissoc :ta))
          (dissoc state :ta))))))
+
+(defn take-photo! []
+  (go
+    (let [[ok? photo-base64] (<! (ls/take-photo!))]
+      (println ok? photo-base64)
+      (-> @model
+        (assoc :new-picture-data-url photo-base64)
+        (swapm! model)))))
+
+
+(defn post-picture [picture-base-64]
+  (POST<
+    "/api/1/upload"
+    {
+      :data picture-base-64
+      :name "asddef.jpg"
+      :type "image/jpeg"}))
+
+(defn send-picture []
+  (println "Selected: " (:selected @model))
+  (println "Context: " (:context @model))
+  (println "Status: " (:status (:context @model)))
+  ; (println "Messages: " ())
+  (println "Teams: " (:teams @model)))
+
+  ; (go
+  ;  (println "Response: " (<! (post-picture (:new-picture-data-url @model))))))
+  ; response :serving_url
+
 
 
 (defn init []
